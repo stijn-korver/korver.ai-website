@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Korver.ai — Building Intelligent Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f4f0;
+      --accent: #c8f563;
+      --accent-dark: #a8d843;
+      --gray: #6b6b6b;
+      --gray-light: #e8e7e3;
+      --gray-mid: #d0cfc9;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-mid);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent-dark); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+
+    .nav-cta {
+      background: var(--black);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2rem;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent-dark) !important; color: var(--black) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 9rem 3rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%;
+      height: 100%;
+      background: var(--black);
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+      z-index: 0;
+    }
+
+    .hero-dot-grid {
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%;
+      height: 100%;
+      background-image: radial-gradient(circle, rgba(200,245,99,0.15) 1px, transparent 1px);
+      background-size: 32px 32px;
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.2s;
+    }
+
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      color: var(--black);
+      max-width: 700px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+
+    .hero h1 .accent-word {
+      color: var(--white);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--gray);
+      max-width: 420px;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.5s;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.65s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--black);
+      padding: 0.85rem 2rem;
+      border-radius: 2rem;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--black);
+      padding: 0.85rem 2rem;
+      border-radius: 2rem;
+      border: 1.5px solid var(--gray-mid);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--black); transform: translateY(-2px); }
+
+    /* STATS */
+    .stats {
+      background: var(--black);
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat {
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: 2rem;
+    }
+    .stat:first-child { border-left: none; padding-left: 0; }
+
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.5rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* SECTION COMMON */
+    section { padding: 7rem 3rem; }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--black);
+      max-width: 600px;
+    }
+
+    .section-title em {
+      font-style: normal;
+      color: var(--gray);
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      background: var(--black);
+      border-radius: 1rem;
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-visual-inner {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: conic-gradient(var(--accent) 0deg, var(--accent) 120deg, transparent 120deg, transparent 240deg, rgba(200,245,99,0.2) 240deg);
+      animation: spin 12s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .about-visual::after {
+      content: 'K';
+      position: absolute;
+      font-family: var(--font-head);
+      font-size: 5rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.05em;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.8;
+      margin-top: 1.5rem;
+    }
+
+    .about-text p + p { margin-top: 1rem; }
+
+    /* PROJECTS */
+    .projects { background: var(--gray-light); }
+
+    .projects-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .project-number {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gray-mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .project-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--black);
+      border-radius: 0.75rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .project-title {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .project-tag {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--accent);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2rem;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact .section-tag { color: rgba(255,255,255,0.4); }
+    .contact .section-title { color: var(--white); max-width: 700px; text-align: center; }
+    .contact .section-title em { color: var(--accent); font-style: normal; }
+
+    .contact-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+      font-weight: 300;
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-email {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+      transition: opacity 0.2s;
+    }
+    .contact-email:hover { opacity: 0.7; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .footer-logo span { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 8rem 1.5rem 4rem; }
+      .hero-bg { width: 100%; clip-path: none; opacity: 0.06; }
+      .hero-dot-grid { display: none; }
+      .stats { grid-template-columns: repeat(2, 1fr); padding: 3rem 1.5rem; }
+      section { padding: 5rem 1.5rem; }
+      .about { grid-template-columns: 1fr; gap: 3rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">korver<span>.ai</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-dot-grid"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Software & Research</span>
+      <h1>Building <span class="accent-word">Intelligent</span><br/>Solutions</h1>
+      <p class="hero-sub">Korver.ai develops purposeful software and research-driven projects at the intersection of technology and real-world impact.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects ↓</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat reveal">
+      <div class="stat-number">12+</div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Research Areas</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-number">3+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Independent</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about">
+      <div class="about-visual">
+        <div class="about-visual-inner"></div>
+      </div>
+      <div class="about-text reveal">
+        <p class="section-tag">About</p>
+        <h2 class="section-title">Where <em>engineering</em> meets curiosity</h2>
+        <p>Korver.ai is an independent software and research studio. We build tools, systems, and solutions that are thoughtful, efficient, and built to last.</p>
+        <p>Whether it's a complex technical challenge or a research-driven product, we approach every project with the same rigour: understand the problem deeply, then solve it cleanly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects">
+    <div class="projects-header reveal">
+      <div>
+        <p class="section-tag">Work</p>
+        <h2 class="section-title">Selected <em>Projects</em></h2>
+      </div>
+      <a href="#contact" class="btn-secondary">Start a Project</a>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-number">01</div>
+        <div class="project-icon">🤖</div>
+        <h3 class="project-title">AI Automation</h3>
+        <p class="project-desc">Designed and deployed intelligent automation pipelines that reduce manual overhead and improve decision-making speed.</p>
+        <span class="project-tag">Machine Learning</span>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-number">02</div>
+        <div class="project-icon">📊</div>
+        <h3 class="project-title">Data Platform</h3>
+        <p class="project-desc">Built a scalable data infrastructure enabling real-time analytics and reporting across distributed teams.</p>
+        <span class="project-tag">Data Engineering</span>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-number">03</div>
+        <div class="project-icon">🔬</div>
+        <h3 class="project-title">Research Tool</h3>
+        <p class="project-desc">Developed a research assistant application that streamlines literature review and synthesis for academic workflows.</p>
+        <span class="project-tag">Research</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <p class="section-tag">Contact</p>
+    <h2 class="section-title reveal">Have a project in <em>mind?</em></h2>
+    <p class="contact-sub reveal">Let's talk about what we can build together.</p>
+    <a href="mailto:hello@korver.ai" class="contact-email reveal">hello@korver.ai</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-logo">korver<span>.ai</span></a>
+    <p class="footer-copy">© 2026 Korver.ai — All rights reserved</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
