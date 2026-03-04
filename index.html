@@ -11,13 +11,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0a0a0a;
-      --white: #f5f4f0;
-      --accent: #c8f563;
-      --accent-dark: #a8d843;
-      --gray: #6b6b6b;
-      --gray-light: #e8e7e3;
-      --gray-mid: #d0cfc9;
+      --black: #2d3778;
+      --navy: #2d3778;
+      --navy-dark: #222960;
+      --navy-light: #3d4898;
+      --white: #ffffff;
+      --off-white: #f5f6ff;
+      --accent: #f5b800;
+      --accent-dark: #d9a200;
+      --gray: #7a7f9a;
+      --gray-light: #eef0f8;
+      --gray-mid: #c8cce0;
       --font-head: 'Syne', sans-serif;
       --font-body: 'DM Sans', sans-serif;
     }
@@ -25,8 +29,8 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--white);
-      color: var(--black);
+      background: var(--off-white);
+      color: var(--navy);
       font-family: var(--font-body);
       font-size: 16px;
       line-height: 1.6;
@@ -46,17 +50,13 @@
       border-bottom: 1px solid var(--gray-mid);
       transition: box-shadow 0.3s;
     }
-    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(45,55,120,0.1); }
 
-    .nav-logo {
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: -0.03em;
-      color: var(--black);
-      text-decoration: none;
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      display: block;
     }
-    .nav-logo span { color: var(--accent-dark); }
 
     .nav-links {
       display: flex;
@@ -72,16 +72,16 @@
       letter-spacing: 0.01em;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--black); }
+    .nav-links a:hover { color: var(--navy); }
 
     .nav-cta {
-      background: var(--black);
+      background: var(--navy);
       color: var(--white) !important;
       padding: 0.5rem 1.25rem;
       border-radius: 2rem;
       transition: background 0.2s !important;
     }
-    .nav-cta:hover { background: var(--accent-dark) !important; color: var(--black) !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--navy) !important; }
 
     /* HERO */
     .hero {
@@ -99,7 +99,7 @@
       top: 0; right: 0;
       width: 55%;
       height: 100%;
-      background: var(--black);
+      background: var(--navy);
       clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
       z-index: 0;
     }
@@ -109,7 +109,7 @@
       top: 0; right: 0;
       width: 55%;
       height: 100%;
-      background-image: radial-gradient(circle, rgba(200,245,99,0.15) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(245,184,0,0.2) 1px, transparent 1px);
       background-size: 32px 32px;
       clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
       z-index: 1;
@@ -140,7 +140,7 @@
       font-weight: 800;
       line-height: 1.0;
       letter-spacing: -0.04em;
-      color: var(--black);
+      color: var(--navy);
       max-width: 700px;
       opacity: 0;
       animation: fadeUp 0.7s ease forwards 0.35s;
@@ -173,11 +173,11 @@
 
     .btn-primary {
       background: var(--accent);
-      color: var(--black);
+      color: var(--navy);
       padding: 0.85rem 2rem;
       border-radius: 2rem;
       font-family: var(--font-body);
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.95rem;
       text-decoration: none;
       transition: background 0.2s, transform 0.2s;
@@ -189,7 +189,7 @@
 
     .btn-secondary {
       background: transparent;
-      color: var(--black);
+      color: var(--navy);
       padding: 0.85rem 2rem;
       border-radius: 2rem;
       border: 1.5px solid var(--gray-mid);
@@ -199,11 +199,11 @@
       text-decoration: none;
       transition: border-color 0.2s, transform 0.2s;
     }
-    .btn-secondary:hover { border-color: var(--black); transform: translateY(-2px); }
+    .btn-secondary:hover { border-color: var(--navy); transform: translateY(-2px); }
 
     /* STATS */
     .stats {
-      background: var(--black);
+      background: var(--navy);
       padding: 4rem 3rem;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -211,7 +211,7 @@
     }
 
     .stat {
-      border-left: 1px solid rgba(255,255,255,0.1);
+      border-left: 1px solid rgba(255,255,255,0.12);
       padding-left: 2rem;
     }
     .stat:first-child { border-left: none; padding-left: 0; }
@@ -251,7 +251,7 @@
       font-weight: 700;
       letter-spacing: -0.03em;
       line-height: 1.1;
-      color: var(--black);
+      color: var(--navy);
       max-width: 600px;
     }
 
@@ -269,7 +269,7 @@
     }
 
     .about-visual {
-      background: var(--black);
+      background: var(--navy);
       border-radius: 1rem;
       aspect-ratio: 4/3;
       position: relative;
@@ -283,20 +283,24 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      background: conic-gradient(var(--accent) 0deg, var(--accent) 120deg, transparent 120deg, transparent 240deg, rgba(200,245,99,0.2) 240deg);
+      background: conic-gradient(var(--accent) 0deg, var(--accent) 120deg, transparent 120deg, transparent 240deg, rgba(245,184,0,0.15) 240deg);
       animation: spin 12s linear infinite;
     }
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
     .about-visual::after {
-      content: 'K';
+      content: '';
       position: absolute;
-      font-family: var(--font-head);
-      font-size: 5rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.05em;
+      inset: 0;
+      background: url('Logo_JPG_V2.jpg') center/contain no-repeat;
+      opacity: 0.12;
+    }
+
+    .about-visual-logo {
+      position: absolute;
+      width: 60%;
+      z-index: 2;
     }
 
     .about-text p {
@@ -399,7 +403,7 @@
 
     /* CONTACT */
     .contact {
-      background: var(--black);
+      background: var(--navy);
       color: var(--white);
       text-align: center;
       display: flex;
@@ -432,7 +436,7 @@
 
     /* FOOTER */
     footer {
-      background: var(--black);
+      background: var(--navy-dark);
       border-top: 1px solid rgba(255,255,255,0.08);
       padding: 2rem 3rem;
       display: flex;
@@ -440,15 +444,12 @@
       justify-content: space-between;
     }
 
-    .footer-logo {
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: 1rem;
-      color: rgba(255,255,255,0.4);
-      text-decoration: none;
-      letter-spacing: -0.02em;
+    .footer-logo img {
+      height: 28px;
+      width: auto;
+      opacity: 0.6;
+      filter: brightness(0) invert(1);
     }
-    .footer-logo span { color: var(--accent); }
 
     .footer-copy {
       font-size: 0.8rem;
@@ -491,7 +492,9 @@
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">korver<span>.ai</span></a>
+    <a href="#" class="nav-logo">
+      <img src="Logo_JPG_V2.jpg" alt="Korver AI Solutions" />
+    </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -539,6 +542,7 @@
     <div class="about">
       <div class="about-visual">
         <div class="about-visual-inner"></div>
+        <img class="about-visual-logo" src="Logo_JPG_V2.jpg" alt="Korver AI Solutions" />
       </div>
       <div class="about-text reveal">
         <p class="section-tag">About</p>
@@ -588,16 +592,18 @@
     <p class="section-tag">Contact</p>
     <h2 class="section-title reveal">Have a project in <em>mind?</em></h2>
     <p class="contact-sub reveal">Let's talk about what we can build together.</p>
-    <a href="mailto:hello@korver.ai" class="contact-email reveal">hello@korver.ai</a>
+    <a href="/cdn-cgi/l/email-protection#48202d2424270823273a3e2d3a662921" class="contact-email reveal"><span class="__cf_email__" data-cfemail="f69e939a9a99b69d9984809384d8979f">[email&#160;protected]</span></a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <a href="#" class="footer-logo">korver<span>.ai</span></a>
+    <a href="#" class="footer-logo">
+      <img src="Logo_JPG_V2.jpg" alt="Korver AI Solutions" />
+    </a>
     <p class="footer-copy">© 2026 Korver.ai — All rights reserved</p>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -608,13 +614,4 @@
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
-
-</body>
-</html>
+  
