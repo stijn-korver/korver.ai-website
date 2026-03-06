@@ -12,7 +12,7 @@ order: 1
   /* PIPELINE — 3 columns top row, 3 columns bottom row on desktop */
   .pipeline-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
     margin: 2.5rem 0;
   }
@@ -45,12 +45,12 @@ order: 1
   }
   .pipeline-step.highlight .step-num { color: rgba(255,255,255,0.2); }
   .step-icon img {
-  width: 100%;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 0.4rem;
-  margin-bottom: 0.4rem;
-}
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
 
   /* BEFORE/AFTER */
   .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
