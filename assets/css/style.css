@@ -1,11 +1,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy: #2d3778;
-  --black: #2d3778;
+  --navy: #374782;
+  --black: #25354f;
   --white: #ffffff;
-  --accent: #f5b800;
-  --accent-dark: #d9a200;
+  --accent: #fbc324;
+  --accent-dark: #e0ad21;
   --gray: #7a7f9a;
   --gray-light: #eef0f8;
   --gray-mid: #c8cce0;
@@ -333,7 +333,7 @@ section { padding: 7rem 3rem; }
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: var(--accent);
+  background: var(--navy);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s;
