@@ -328,6 +328,7 @@ section { padding: 7rem 3rem; }
   display: block;
   color: inherit;
 }
+
 .project-card::before {
   content: '';
   position: absolute;
@@ -338,6 +339,7 @@ section { padding: 7rem 3rem; }
   transform-origin: left;
   transition: transform 0.3s;
 }
+
 .project-card {
   display: flex;
   flex-direction: column;
@@ -351,6 +353,13 @@ section { padding: 7rem 3rem; }
   overflow: hidden;
 }
 
+.project-card-wrap {
+  display: flex;
+}
+
+.project-card-wrap .project-card {
+  flex: 1;
+}
 .project-card > div:last-child,
 .project-card > a:last-child {
   margin-top: auto;
