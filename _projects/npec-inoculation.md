@@ -5,8 +5,8 @@ summary: Plant inoculation system that does time-consuming, tedious, error-prone
 category: Automation
 tags: [Computer Vision, Robotics]
 icon: 🌱
-order: 1
-date: January 2025
+order: 6
+date: January 2026
 ---
 
 <style>
