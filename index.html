@@ -62,7 +62,7 @@ layout: default
     <a href="{{ '/projects/' | relative_url }}" class="btn-secondary">All Projects →</a>
   </div>
   <div class="projects-grid">
-    {% assign sorted_projects = site.projects | sort: 'order' | limit: 3 %}
+    {% assign sorted_projects = site.projects | where: 'featured', true | sort: 'order' | limit: 3 %}
     {% for project in sorted_projects %}
     <a href="{{ project.url | relative_url }}" class="project-card reveal">
       <div class="project-number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>

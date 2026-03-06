@@ -3,10 +3,11 @@ layout: project
 title: Predicting Diabetes in Hospital Patients
 summary: Developed a research assistant application that streamlines literature review and synthesis for academic workflows.
 category: Predicting
-tags: [Research, BI, Dashboard]
-icon: 🔬
+tags: [Medical, Predictive]
+icon: 🏥
 order: 2
 date: January 2025
+featured: false
 ---
 
 ## Overview

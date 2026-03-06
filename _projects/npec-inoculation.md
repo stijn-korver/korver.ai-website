@@ -7,6 +7,7 @@ tags: [Computer Vision, Robotics]
 icon: 🌱
 order: 6
 date: January 2026
+featured: true
 ---
 
 <style>

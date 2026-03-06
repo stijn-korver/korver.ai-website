@@ -3,10 +3,11 @@ layout: project
 title: RaceCTRL
 summary: Developed a fair motorsport stewarding tool.
 category: Classification
-tags: [Computer Vision, Image Classification]
-icon: 🔬
+tags: [Image Classification, Computer Vision]
+icon: 🏎️
 order: 3
 date: April 2025
+featured: true
 ---
 
 ## Overview

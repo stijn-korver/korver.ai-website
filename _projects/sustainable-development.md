@@ -3,10 +3,11 @@ layout: project
 title: How Formula One can Travel More Sustainably
 summary: Developed a research assistant application that streamlines literature review and synthesis for academic workflows.
 category: Sustainability
-tags: [Research, BI, Dashboard]
-icon: 🔬
+tags: [Sustainability, Research, Dashboard]
+icon: 🌍
 order: 1
 date: November 2024
+featured: true
 ---
 
 ## Overview

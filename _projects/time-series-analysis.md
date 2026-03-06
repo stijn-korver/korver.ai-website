@@ -4,9 +4,10 @@ title: Predicting the Stock Market
 summary: Developed a research assistant application that streamlines literature review and synthesis for academic workflows.
 category: Predicting
 tags: [Finance, Predicting]
-icon: 🔬
+icon: 💹
 order: 4
 date: June 2025
+featured: false
 ---
 
 ## Overview

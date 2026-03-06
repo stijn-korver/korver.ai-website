@@ -4,9 +4,10 @@ title: Predicting Emotions from Text
 summary: Developed a research assistant application that streamlines literature review and synthesis for academic workflows.
 category: Natural Language Processing
 tags: [NLP, Emotions, Predicting]
-icon: 🔬
+icon: 💬
 order: 5
 date: June 2025
+featured: false
 ---
 
 ## Overview
