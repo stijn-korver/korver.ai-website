@@ -1,0 +1,159 @@
+---
+layout: default
+title: About
+permalink: /about/
+---
+
+<style>
+  .about-page-hero {
+    padding: 10rem 3rem 5rem;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(245,184,0,0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .about-page-hero-content { position: relative; z-index: 1; }
+  .about-page-hero .section-tag { color: rgba(255,255,255,0.4); }
+  .about-page-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--white);
+    margin: 0.5rem 0 0;
+  }
+  .about-page-hero h1 em { font-style: normal; color: var(--accent); }
+
+  .about-page-body {
+    padding: 6rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-page-visual {
+    background: var(--black);
+    border-radius: 1rem;
+    aspect-ratio: 4/3;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 6rem;
+  }
+  .about-page-visual-inner {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(var(--accent) 0deg, var(--accent) 120deg, transparent 120deg, transparent 240deg, rgba(245,184,0,0.15) 240deg);
+    animation: spin 12s linear infinite;
+  }
+  .about-page-visual::after {
+    content: 'K';
+    position: absolute;
+    font-family: var(--font-head);
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.05em;
+  }
+
+  .about-page-text h2 {
+    font-family: var(--font-head);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin: 2.5rem 0 1rem;
+  }
+  .about-page-text h2:first-child { margin-top: 0; }
+  .about-page-text p {
+    color: var(--gray);
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+
+  .about-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .about-value {
+    background: var(--gray-light);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+  .about-value-title {
+    font-family: var(--font-head);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 0.4rem;
+  }
+  .about-value-desc {
+    font-size: 0.8rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .about-page-hero { padding: 8rem 1.5rem 3rem; }
+    .about-page-body { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
+    .about-page-visual { position: relative; top: 0; }
+    .about-values { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section class="about-page-hero">
+  <div class="about-page-hero-content">
+    <p class="section-tag">About</p>
+    <h1>Where <em>engineering</em><br/>meets curiosity</h1>
+  </div>
+</section>
+
+<div class="about-page-body">
+  <div class="about-page-visual">
+    <div class="about-page-visual-inner"></div>
+  </div>
+  <div class="about-page-text reveal">
+    <h2>Who we are</h2>
+    <p>Korver AI Solutions is an independent software and research studio. We build tools, systems, and solutions that are thoughtful, efficient, and built to last.</p>
+    <p>Whether it's a complex technical challenge or a research-driven product, we approach every project with the same rigour: understand the problem deeply, then solve it cleanly.</p>
+
+    <h2>What we do</h2>
+    <p>We work at the intersection of software engineering and applied research — building things that are both technically sound and practically useful. Our projects span machine learning, robotics, data engineering, and research tooling.</p>
+
+    <h2>How we work</h2>
+    <div class="about-values">
+      <div class="about-value">
+        <div class="about-value-title">Understand first</div>
+        <div class="about-value-desc">We take time to deeply understand the problem before writing a single line of code.</div>
+      </div>
+      <div class="about-value">
+        <div class="about-value-title">Build clean</div>
+        <div class="about-value-desc">Simple, maintainable solutions over complex ones. Every time.</div>
+      </div>
+      <div class="about-value">
+        <div class="about-value-title">Stay curious</div>
+        <div class="about-value-desc">Research and engineering inform each other. We never stop learning.</div>
+      </div>
+      <div class="about-value">
+        <div class="about-value-title">Deliver value</div>
+        <div class="about-value-desc">The measure of good work is whether it actually solves the problem.</div>
+      </div>
+    </div>
+  </div>
+</div>
