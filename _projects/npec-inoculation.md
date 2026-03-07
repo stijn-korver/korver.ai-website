@@ -113,7 +113,7 @@ The full system runs autonomously from image capture to inoculation delivery.
     <div class="step-label">Daily Time-Series Photography of Petri Dishes</div>
   </div>
   <div class="pipeline-step highlight">
-    <div class="step-icon"><img src="/assets/images/projects/npenpec-inoculationc/pipeline-segmentation.png" alt="Segmentation" /></div>
+    <div class="step-icon"><img src="/assets/images/projects/npec-inoculation/pipeline-segmentation.png" alt="Segmentation" /></div>
     <div class="step-title">02. Segmentation</div>
     <div class="step-label">U-Net Detects Roots</div>
   </div>
