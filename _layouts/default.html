@@ -10,6 +10,22 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
   <link rel="icon" type="image/png" href="{{ '/assets/images/branding/favicon.png' | relative_url }}?v=2" />
 </head>
+
+<script>
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('navMobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>
+
 <body>
 
   {% include nav.html %}

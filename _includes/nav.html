@@ -1,6 +1,6 @@
 <nav id="navbar">
   <a href="{{ '/' | relative_url }}" class="nav-logo">
-    <img src="{{ '/assets/images/branding/wordmark_yellow.png' | relative_url }}" alt="Korver AI Solutions" height="32" />
+    <img src="{{ '/assets/images/branding/wordmark_on_white.png' | relative_url }}" alt="Korver AI Solutions" height="32" />
   </a>
   <ul class="nav-links">
     <li><a href="{{ '/' | relative_url }}">Home</a></li>
@@ -8,4 +8,16 @@
     <li><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
     <li><a href="{{ '/#contact' | relative_url }}" class="nav-cta">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="{{ '/' | relative_url }}">Home</a>
+  <a href="{{ '/about/' | relative_url }}">About</a>
+  <a href="{{ '/projects/' | relative_url }}">Projects</a>
+  <a href="{{ '/#contact' | relative_url }}">Contact</a>
+</div>
