@@ -223,9 +223,9 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(45,55,120,0.1); }
   transition: background 0.2s, transform 0.2s;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   width: 200px;
-  justify-content: center;
 }
 .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
 
@@ -240,8 +240,10 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(45,55,120,0.1); }
   font-size: 0.95rem;
   text-decoration: none;
   transition: border-color 0.2s, transform 0.2s;
-  width: 200px;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  width: 200px;
 }
 .btn-secondary:hover { border-color: var(--navy); transform: translateY(-2px); }
 
@@ -657,10 +659,9 @@ footer {
     background: var(--navy);
     color: var(--white) !important;
     border-color: var(--navy);
-    justify-content: flex-end;
-    text-align: left;
-    min-width: unset;
+    justify-content: center;
     width: auto;
+    min-width: unset;
   }
   .btn-primary:hover, .btn-secondary:hover {
     background: var(--black);
