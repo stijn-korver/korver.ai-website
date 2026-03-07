@@ -247,31 +247,28 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(45,55,120,0.1); }
 
 /* STATS */
 .stats {
-  background: var(--accent);
+  background: var(--navy);
   padding: 4rem 3rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
-
 .stat {
-  border-left: 1px solid rgba(45,55,120,0.15);
+  border-left: 1px solid rgba(255,255,255,0.1);
   padding-left: 2rem;
 }
 .stat:first-child { border-left: none; padding-left: 0; }
-
 .stat-number {
   font-family: var(--font-head);
   font-size: 3rem;
   font-weight: 800;
-  color: var(--navy);
+  color: var(--accent);
   letter-spacing: -0.04em;
   line-height: 1;
 }
-
 .stat-label {
   font-size: 0.875rem;
-  color: rgba(45,55,120,0.6);
+  color: rgba(255,255,255,0.5);
   margin-top: 0.5rem;
   font-weight: 300;
   letter-spacing: 0.02em;
@@ -591,18 +588,18 @@ section { padding: 7rem 3rem; }
 
 /* CONTACT */
 .contact {
-  background: var(--accent);
-  color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.contact .section-tag { color: rgba(45,55,120,0.5); }
-.contact .section-title { color: var(--navy); max-width: 700px; text-align: center; }
-.contact .section-title em { color: var(--navy); font-style: normal; }
+.contact .section-tag { color: rgba(255,255,255,0.4); }
+.contact .section-title { color: var(--white); max-width: 700px; text-align: center; }
+.contact .section-title em { color: var(--accent); font-style: normal; }
 .contact-sub {
-  color: rgba(45,55,120,0.6);
+  color: rgba(255,255,255,0.5);
   font-size: 1rem;
   font-weight: 300;
   margin-top: 1.5rem;
@@ -612,7 +609,7 @@ section { padding: 7rem 3rem; }
   font-family: var(--font-head);
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 700;
-  color: var(--navy);
+  color: var(--accent);
   text-decoration: none;
   letter-spacing: -0.03em;
   transition: opacity 0.2s;
