@@ -54,17 +54,10 @@ permalink: /about/
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: conic-gradient(var(--accent) 0deg, var(--accent) 120deg, transparent 120deg, transparent 240deg, rgba(245,184,0,0.15) 240deg);
-    animation: spin 12s linear infinite;
+    background: var(--accent);
   }
   .about-page-visual::after {
-    content: 'K';
-    position: absolute;
-    font-family: var(--font-head);
-    font-size: 5rem;
-    font-weight: 800;
-    color: var(--white);
-    letter-spacing: -0.05em;
+    content: none;
   }
 
   .about-page-text h2 {
@@ -252,7 +245,7 @@ permalink: /about/
 
 <div class="about-page-body">
   <div class="about-page-visual">
-    <img src="{{ '/assets/images/branding/socials_icon.jpg' | relative_url }}" 
+    <img src="{{ '/assets/images/branding/favicon_navy.png' | relative_url }}" 
         alt="Korver AI Solutions" 
         style="width:60%; border-radius: 1rem;" />
   </div>
