@@ -82,9 +82,9 @@ featured: true
   .callout-text strong { color: var(--accent); font-weight: 600; }
 
   /* TABLE */
-  .project-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .project-body table { width: 100%; table-layout: fixed; border-collapse: collapse; margin: 1.5rem 0; font-size: clamp(0.6rem, 1.5vw, 0.9rem); }
   .project-body th { background: var(--black); color: var(--white); padding: 0.75rem 1rem; text-align: left; font-family: var(--font-head); font-weight: 600; font-size: 0.8rem; }
-  .project-body td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--gray-light); color: var(--gray); }
+  .project-body td { padding: 0.5rem; word-break: break-word; border-bottom: 1px solid var(--gray-light); color: var(--gray); }
   .project-body tr:hover td { background: var(--gray-light); }
 
   @media (max-width: 700px) {
