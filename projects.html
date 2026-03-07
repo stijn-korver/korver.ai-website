@@ -162,10 +162,9 @@ permalink: /projects/
       <div class="sort-group">
         <span class="sort-label">Sort by</span>
         <select class="sort-select" id="sortSelect">
-          <option value="order">Featured</option>
           <option value="date-desc">Newest first</option>
           <option value="date-asc">Oldest first</option>
-          <option value="title">Title A–Z</option>
+          <option value="title">Alphabetical</option>
         </select>
       </div>
     </div>
@@ -228,7 +227,7 @@ permalink: /projects/
     // Sort
     const sortVal = sortSelect.value;
     visible.sort((a, b) => {
-      if (sortVal === 'order') return (a.dataset.order || 99) - (b.dataset.order || 99);
+
       if (sortVal === 'title') return a.dataset.title.localeCompare(b.dataset.title);
       if (sortVal === 'date-desc') return (b.dataset.date || '').localeCompare(a.dataset.date || '');
       if (sortVal === 'date-asc') return (a.dataset.date || '').localeCompare(b.dataset.date || '');
