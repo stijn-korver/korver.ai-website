@@ -568,7 +568,7 @@ section { padding: 7rem 3rem; }
   padding-left: 1.5rem;
 }
 .project-body li {
-  color: var(--navy);
+  color: var(--gray);
   margin-bottom: 0.4rem;
 }
 .project-body li span,
