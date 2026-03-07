@@ -109,11 +109,137 @@ permalink: /about/
     line-height: 1.5;
   }
 
+  /* TEAM */
+  .about-team {
+    padding: 6rem 3rem;
+    background: var(--gray-light);
+  }
+  .about-team-header {
+    margin-bottom: 3rem;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .person-card {
+    background: var(--white);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .person-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(55,71,130,0.1); }
+  .person-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    background: var(--gray-mid);
+  }
+  .person-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .person-body {
+    padding: 1.5rem;
+  }
+  .person-name {
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.2rem;
+  }
+  .person-role {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+  .person-bio {
+    font-size: 0.875rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .person-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .person-link {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--navy);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+    border: 1.5px solid var(--gray-mid);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .person-link:hover { border-color: var(--navy); background: var(--gray-light); }
+
+  /* COMPANY INFO */
+  .about-company {
+    padding: 5rem 3rem;
+    background: var(--accent);
+  }
+  .about-company-header { margin-bottom: 2.5rem; }
+  .about-company-header .section-tag { color: rgba(55,71,130,0.5); }
+  .company-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .company-info-item {
+    border-left: 2px solid rgba(55,71,130,0.2);
+    padding-left: 1.25rem;
+  }
+  .company-info-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(55,71,130,0.5);
+    margin-bottom: 0.4rem;
+  }
+  .company-info-value {
+    font-family: var(--font-head);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  a.company-info-value:hover { opacity: 0.7; }
+
   @media (max-width: 900px) {
     .about-page-hero { padding: 8rem 1.5rem 3rem; }
     .about-page-body { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
     .about-page-visual { position: relative; top: 0; }
     .about-values { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .about-team { padding: 4rem 1.5rem; }
+    .company-info-grid { grid-template-columns: 1fr 1fr; }
+    .about-company { padding: 4rem 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .company-info-grid { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -154,6 +280,59 @@ permalink: /about/
         <div class="about-value-title">Deliver value</div>
         <div class="about-value-desc">The measure of good work is whether it actually solves the problem.</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div class="about-team">
+  <div class="about-team-header reveal">
+    <p class="section-tag">Team</p>
+    <h2 class="section-title">The people <em>behind the work</em></h2>
+  </div>
+  <div class="team-grid">
+
+    <!-- Duplicate this card for each team member -->
+    <div class="person-card reveal">
+      <!-- Use photo: <img class="person-photo" src="/assets/images/team/stijn.jpg" alt="Stijn Korver" /> -->
+      <!-- Or placeholder with initial: -->
+      <div class="person-photo-placeholder">S</div>
+      <div class="person-body">
+        <div class="person-name">Stijn Korver</div>
+        <div class="person-role">Founder & Developer</div>
+        <p class="person-bio">Short bio about Stijn goes here. A sentence or two about background, focus areas, and what drives the work.</p>
+        <div class="person-links">
+          <a href="https://linkedin.com/in/stijnkorver" class="person-link" target="_blank">↗ LinkedIn</a>
+          <a href="mailto:hello@korver.ai" class="person-link">✉ Email</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- COMPANY INFO -->
+<div class="about-company">
+  <div class="about-company-header reveal">
+    <p class="section-tag">Company</p>
+    <h2 class="section-title">Korver <em>AI Solutions</em></h2>
+  </div>
+  <div class="company-info-grid reveal">
+    <div class="company-info-item">
+      <div class="company-info-label">Address</div>
+      <div class="company-info-value">Street Name 1<br/>1234 AB City<br/>Netherlands</div>
+    </div>
+    <div class="company-info-item">
+      <div class="company-info-label">KVK Number</div>
+      <div class="company-info-value">12345678</div>
+    </div>
+    <div class="company-info-item">
+      <div class="company-info-label">Phone</div>
+      <a href="tel:+31612345678" class="company-info-value">+31 6 1234 5678</a>
+    </div>
+    <div class="company-info-item">
+      <div class="company-info-label">Email</div>
+      <a href="mailto:hello@korver.ai" class="company-info-value">hello@korver.ai</a>
     </div>
   </div>
 </div>
