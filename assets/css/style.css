@@ -655,4 +655,15 @@ footer {
   footer { flex-direction: column; gap: 1rem; text-align: center; }
   .project-hero { padding: 8rem 1.5rem 3rem; }
   .project-body { padding: 3rem 1.5rem; }
+    .btn-primary, .btn-secondary {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-primary:hover, .btn-secondary:hover {
+    background: var(--black);
+    border-color: var(--black);
+  }
 }
