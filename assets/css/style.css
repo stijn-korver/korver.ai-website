@@ -107,7 +107,7 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(45,55,120,0.1); }
 .nav-mobile-menu a {
   font-family: var(--font-body);
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--navy);
   text-decoration: none;
   letter-spacing: -0.02em;
