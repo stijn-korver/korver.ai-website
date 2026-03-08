@@ -13,7 +13,7 @@ featured: true
 
 ## The Challenge
 
-In collaboration with [Tito Technologies](https://titotechnologies.com), we ...
+In collaboration with [Tito Technologies](https://titotechnologies.com){:target="_blank"}, we ...
 
 ## What We Built
 
