@@ -1,13 +1,13 @@
 ---
 layout: project
-title: Predicting Hospital Readmissions
-summary: System that can identify the key factors that contribute to hospital readmissions within 30 days among diabetic patients.
-category: Predicting
-tags: [Medical, Predictive Modeling]
-banner: /assets/images/projects/predictive-modeling/banner.png
-icon: 🏥
-order: 2
-date: January 2025
+title: Predicting the Chip Industry
+summary: Application that can predict the daily closing stock prices of companies operating in, or closely associated with, the chip industry.
+category: Time Series
+tags: [Time Series Analysis, Finance]
+banner: /assets/images/projects/chip-industry/banner.png
+icon: 💹
+order: 4
+date: June 2025
 featured: false
 ---
 

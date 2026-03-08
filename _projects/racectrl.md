@@ -1,7 +1,7 @@
 ---
 layout: project
 title: RaceCTRL
-summary: Image classification system that automatically detects collisions in motorsport to increase fairness and consistency.
+summary: Platform with image classification system that detects collisions in motorsport to increase stewarding consistency.
 category: Classification
 tags: [Image Classification, Computer Vision]
 banner: /assets/images/projects/racectrl/banner.png
@@ -11,18 +11,14 @@ date: April 2025
 featured: true
 ---
 
-## Overview
-
-This project involved building end-to-end automation pipelines for a client dealing with high volumes of repetitive decision-making tasks. By introducing machine learning models into their workflow, we reduced manual processing time by over 60%.
-
 ## The Challenge
 
-The client's team was spending significant time on tasks that followed predictable patterns — classifying incoming requests, routing them to the right department, and generating initial responses. This was slowing down their operations and creating bottlenecks.
+In collaboration with [Tito Technologies](https://titotechnologies.com), we ...
 
 ## What We Built
 
-We designed a modular pipeline that could ingest incoming data, classify it using a fine-tuned language model, and trigger the appropriate downstream action. The system was built to be interpretable — every decision came with a confidence score and a plain-language explanation.
+We designed and implemented a lightweight data platform that pulls from all their existing sources, normalises the data, and serves it through an interactive dashboard. The entire stack was built with simplicity and maintainability in mind — no unnecessary complexity.
 
-## Outcome
+## The Results
 
-After deployment, processing time dropped dramatically and the team could focus on the complex, high-judgment tasks that actually required human input.
+The team now has real-time visibility into performance metrics across all locations. Report generation that used to take hours now happens automatically overnight.

@@ -1,7 +1,7 @@
 ---
 layout: project
 title: End-to-End Inoculation
-summary: Fully autonomous plant inoculation system combining image segmentation and robotic control to deliver precise inoculation to root tips across thousands of Petri dishes.
+summary: Fully autonomous plant inoculation system combining image segmentation and robotic control for precise inoculation.
 category: Automation
 tags: [Computer Vision, Robotics]
 banner: /assets/images/projects/end-to-end-inoculation/banner.png
@@ -85,7 +85,7 @@ featured: true
   }
 </style>
 
-## Challenge
+## The Challenge
 
 Plant phenotyping research depends on inoculating large numbers of seedlings under identical conditions, but the traditional process is entirely manual. Researchers place a pipette by hand at the tip of each root, one by one, across hundreds of Petri dishes per experiment. This is not only time-consuming, but introduces human error: positioning varies between operators and sessions, which contaminates the experimental data and limits how confidently conclusions can be drawn.
 
@@ -108,7 +108,7 @@ The scale of the problem compounds the difficulty. The client's facility process
 
 ---
 
-## Solution
+## What We Built
 
 The system we developed removes the researcher from the inoculation loop entirely. Each day, the facility's existing cameras photograph every Petri dish. A computer vision model then analyses those images, identifying the roots of each individual plant and pinpointing the precise tip of each root — the target for inoculation.
 
@@ -168,7 +168,7 @@ Once root tips are located, their coordinates are passed to a robot that moves a
 
 ---
 
-## Result
+## The Results
 
 The delivered system fully automates a process that previously required constant manual effort. The robot positions itself within a millimetre of each root tip and dispenses inoculant without any human involvement, across every plant in every dish, in every experiment.
 
