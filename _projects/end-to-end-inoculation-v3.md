@@ -138,17 +138,19 @@ featured: true
   }
 </style>
 
-Plant inoculation is a core task in phenotyping research — but when done manually across thousands of samples it becomes a bottleneck: slow, inconsistent, and difficult to scale. This project delivers a fully autonomous system that handles the entire workflow, from detecting roots in Petri dish photographs to delivering inoculant at the correct position via robotic control.
+## Overview
+
+Plant research requires precise, repeatable inoculation of hundreds of plants. This process is traditionally manual, time-consuming, and prone to inconsistency. For meaningful scientific results, our client needed standardized conditions across large sample sizes. This project delivered a fully autonomous system that handles our client's entire workflow, from detecting roots in Petri dish photographs to delivering inoculant at the correct position via robotic control.
 
 <div class="stat-row">
-  <div class="stat-box"><div class="stat-num">10<span>k</span></div><div class="stat-lbl">Seedlings supported</div></div>
-  <div class="stat-box"><div class="stat-num">2<span>k+</span></div><div class="stat-lbl">Petri dishes</div></div>
-  <div class="stat-box"><div class="stat-num">0.<span>83</span></div><div class="stat-lbl">Segmentation F1-score</div></div>
-  <div class="stat-box"><div class="stat-num">100<span>%</span></div><div class="stat-lbl">Inoculation success rate</div></div>
+  <div class="stat-box"><div class="stat-num">10k</div><div class="stat-lbl">Seedlings</div></div>
+  <div class="stat-box"><div class="stat-num">2k+</div><div class="stat-lbl">Petri Dishes</div></div>
+  <div class="stat-box"><div class="stat-num">93.6%</div><div class="stat-lbl">Accuracy</div></div>
+  <div class="stat-box"><div class="stat-num">100%</div><div class="stat-lbl">Inoculation Success</div></div>
 </div>
 
 <div class="csr-grid">
-  <div class="csr-card">
+  <div class="csr-card dark">
     <div class="csr-tag">Challenge</div>
     <h3>Manual inoculation doesn't scale</h3>
     <p>Researchers were inoculating hundreds of <em>Arabidopsis thaliana</em> seedlings by hand — a slow, inconsistent process that introduced variability into experimental results across thousands of Petri dishes.</p>
@@ -158,7 +160,7 @@ Plant inoculation is a core task in phenotyping research — but when done manua
     <h3>A fully autonomous pipeline</h3>
     <p>A U-Net segmentation model detects roots in daily Petri dish photographs, locates root tips via post-processing, and feeds coordinates to a PID-controlled robot that delivers inoculant autonomously.</p>
   </div>
-  <div class="csr-card">
+  <div class="csr-card dark">
     <div class="csr-tag">Result</div>
     <h3>Reliable, repeatable automation</h3>
     <p>The system achieves a 100% inoculation success rate with sub-millimetre positioning accuracy, scaling to over 10,000 seedlings across 2,000+ dishes without any manual intervention.</p>
@@ -169,32 +171,28 @@ Plant inoculation is a core task in phenotyping research — but when done manua
 
 ## How It Works
 
-The system runs fully autonomously across four stages, using the facility's existing imaging infrastructure.
+The solution that we proposed to our client is a system that uses existing infrastructure to autonomously run across four stages: capturing, segmenting, locating and inoculating root-tips.
 
 <div class="pipeline-carousel-wrap">
   <div class="pipeline-carousel" id="pipelineCarousel">
     <div class="pipeline-step">
-      <div class="step-num">01</div>
       <div class="step-icon"><img src="/assets/images/projects/end-to-end-inoculation/pipeline-capture.png" alt="Image Capture" /></div>
-      <div class="step-title">Image Capture</div>
+      <div class="step-title">01. Image Capture</div>
       <div class="step-label">Daily Photographs of Petri Dishes</div>
     </div>
     <div class="pipeline-step highlight">
-      <div class="step-num">02</div>
       <div class="step-icon"><img src="/assets/images/projects/end-to-end-inoculation/pipeline-segmentation.png" alt="Segmentation" /></div>
-      <div class="step-title">Segmentation</div>
+      <div class="step-title">02. Segmentation</div>
       <div class="step-label">U-Net Detects Roots</div>
     </div>
-    <div class="pipeline-step highlight">
-      <div class="step-num">03</div>
+    <div class="pipeline-step">
       <div class="step-icon"><img src="/assets/images/projects/end-to-end-inoculation/pipeline-roottip.png" alt="Root Tip Detection" /></div>
-      <div class="step-title">Root Tip Detection</div>
+      <div class="step-title">03. Root Tip Detection</div>
       <div class="step-label">Locate Inoculation Targets</div>
     </div>
-    <div class="pipeline-step">
-      <div class="step-num">04</div>
+    <div class="pipeline-step highlight">
       <div class="step-icon"><img src="/assets/images/projects/end-to-end-inoculation/pipeline-inoculation.gif" alt="Inoculation" /></div>
-      <div class="step-title">Inoculation</div>
+      <div class="step-title">04. Inoculation</div>
       <div class="step-label">Autonomous Delivery to Root Tips</div>
     </div>
   </div>
@@ -210,11 +208,9 @@ The system runs fully autonomously across four stages, using the facility's exis
 
 ## Image Segmentation Model
 
-The segmentation backbone is a **U-Net** trained to classify every pixel in a Petri dish image into one of four classes: *background*, *root*, *seed*, or *shoot*. The performance figures below reflect root segmentation quality **before any post-processing** — instance separation, skeletonisation, and root-tip localisation are applied afterwards.
+The segmentation backbone is a **U-Net** trained to classify every pixel in a Petri dish image into one of four classes: *background*, *root*, *seed*, or *shoot*. The model operates purely on raw pixel data. The model performance reflect root segmentation quality **before** any post-processing, not the final root-tip localisations used for inoculation.
 
-### Dataset
-
-The training set consists of **650+ Petri dish images**, preprocessed through a consistent three-step pipeline before being fed to the model.
+The training data consisted of just **650 images**, preprocessed through a consistent three-step pipeline before being fed to the model.
 
 <div class="seg-dataset-row">
   <div class="seg-dataset-step">
@@ -236,7 +232,7 @@ The training set consists of **650+ Petri dish images**, preprocessed through a 
   </div>
 </div>
 
-### Patch Size: Why 128×128?
+Why 128×128? This patch size was selected as a deliberate trade-off between three competing factors.
 
 <div class="patch-tradeoff">
   <div class="pt-card pt-lose">
@@ -255,6 +251,12 @@ The training set consists of **650+ Petri dish images**, preprocessed through a 
     <div class="pt-note">4× more memory per patch; significantly slower training with no guarantee of meaningful accuracy gain</div>
   </div>
 </div>
+
+---
+
+## Technical Details
+
+The sections below cover the model training approach, performance analysis, and robotic controller design. They're intended for readers who want to understand the methodology behind the results above.
 
 ### Training Strategy
 
@@ -332,9 +334,7 @@ The final model is the result of 39 training iterations. Each key change address
 | 24 | Data augmentation | 0.0534 | 0.7705 |
 | **39** | **Reduce LR on plateau** | **0.0048** | **0.8308** |
 
----
-
-## Instance Segmentation
+### Instance Segmentation
 
 Beyond classifying pixels, the pipeline must separate individual plant roots within each dish. Early versions detected spurious instances — noise artifacts misclassified as separate plants — inflating root counts and corrupting length measurements.
 
@@ -362,9 +362,7 @@ Beyond classifying pixels, the pipeline must separate individual plant roots wit
   <div class="callout-text">After refining the pipeline, spurious detections were eliminated entirely. The model correctly identifies the <strong>2 plants</strong> present — down from 5 false detections — with root lengths accurate to within a few pixels.</div>
 </div>
 
----
-
-## Robotic Control
+### Robotic Control
 
 Two controllers were designed and benchmarked in a physics simulation of the target robot platform, both tasked with positioning a pipette over detected root tips with sub-millimetre accuracy.
 
