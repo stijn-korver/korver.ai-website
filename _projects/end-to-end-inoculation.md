@@ -78,40 +78,32 @@ featured: true
   }
 </style>
 
-## Overview
+## Challenge
 
-Plant research requires precise, repeatable inoculation of hundreds of plants. This process is traditionally manual, time-consuming, and prone to inconsistency. For meaningful scientific results, our client needed standardized conditions across large sample sizes. This project delivered a fully autonomous system that handles our client's entire workflow, from detecting roots in Petri dish photographs to delivering inoculant at the correct position via robotic control.
+Plant phenotyping research depends on inoculating large numbers of seedlings under identical conditions, but the traditional process is entirely manual. Researchers place a pipette by hand at the tip of each root, one by one, across hundreds of Petri dishes per experiment. This is not only time-consuming, but introduces human error: positioning varies between operators and sessions, which contaminates the experimental data and limits how confidently conclusions can be drawn.
 
-<div class="stat-row">
-  <div class="stat-box"><div class="stat-num">10k</div><div class="stat-lbl">Seedlings</div></div>
-  <div class="stat-box"><div class="stat-num">2k+</div><div class="stat-lbl">Petri Dishes</div></div>
-  <div class="stat-box"><div class="stat-num">93.6%</div><div class="stat-lbl">Accuracy</div></div>
-  <div class="stat-box"><div class="stat-num">100%</div><div class="stat-lbl">Inoculation Success</div></div>
-</div>
-
-<div class="csr-grid">
-  <div class="csr-card dark">
-    <div class="csr-tag">Challenge</div>
-    <h3>Manual inoculation doesn't scale</h3>
-    <p>Researchers were inoculating hundreds of seedlings by hand — a slow, inconsistent process that introduced variability into experimental results across thousands of Petri dishes.</p>
+<div class="challenge-cards">
+  <div class="challenge-card">
+    <strong>Time-Consuming</strong>
+    <p>Inoculating thousands of seedlings by hand takes days of researcher time per experiment. Hours that could be spent on analysis and interpretation.</p>
   </div>
-  <div class="csr-card dark">
-    <div class="csr-tag">Solution</div>
-    <h3>A fully autonomous pipeline</h3>
-    <p>A computer vision model detects roots in daily Petri dish photographs, locates root tips automatically, and feeds coordinates to a robot that delivers inoculant with sub-millimetre precision.</p>
+  <div class="challenge-card">
+    <strong>Inconsistent Results</strong>
+    <p>Positioning varies between operators and sessions. Even small differences in where inoculant is applied introduce variability that contaminates experimental data.</p>
   </div>
-  <div class="csr-card dark">
-    <div class="csr-tag">Result</div>
-    <h3>Reliable, repeatable automation</h3>
-    <p>The system achieves a 100% inoculation success rate, scaling to over 10,000 seedlings across 2,000+ dishes without any manual intervention.</p>
+  <div class="challenge-card">
+    <strong>Doesn't Scale</strong>
+    <p>The facility handles over 10,000 seedlings. Manual inoculation simply cannot keep pace with that throughput without significant staffing overhead.</p>
   </div>
 </div>
+
+The scale of the problem compounds the difficulty. The client's facility processes up to 10,000 seedlings across more than 2,000 Petri dishes. At that volume, manual inoculation is simply not viable as a long-term approach, It consumes researcher hours that could be spent on analysis, and the inconsistency it introduces undermines the scientific value of the experiments.
 
 ---
 
-## How It Works
+## Solution
 
-The solution uses the client's existing infrastructure to run fully autonomously across four stages: capturing, segmenting, locating and inoculating root tips.
+The system we developed removes the researcher from the inoculation loop entirely. Each day, the facility's existing cameras photograph every Petri dish. A computer vision model then analyses those images, identifying the roots of each individual plant and pinpointing the precise tip of each root — the target for inoculation.
 
 <div class="pipeline-carousel-wrap">
   <div class="pipeline-carousel" id="pipelineCarousel">
@@ -144,20 +136,6 @@ The solution uses the client's existing infrastructure to run fully autonomously
   </div>
 </div>
 
----
-
-## Challenge
-
-Plant phenotyping research depends on inoculating large numbers of seedlings under identical conditions — but the traditional process is entirely manual. Researchers place a pipette by hand at the tip of each root, one by one, across hundreds of Petri dishes per experiment. This is not only time-consuming but introduces human error: positioning varies between operators and sessions, which contaminates the experimental data and limits how confidently conclusions can be drawn.
-
-The scale of the problem compounds the difficulty. The client's facility processes up to 10,000 seedlings across more than 2,000 Petri dishes. At that volume, manual inoculation is simply not viable as a long-term approach — it consumes researcher hours that could be spent on analysis, and the inconsistency it introduces undermines the scientific value of the experiments.
-
----
-
-## Solution
-
-The system we developed removes the researcher from the inoculation loop entirely. Each day, the facility's existing cameras photograph every Petri dish. A computer vision model then analyses those images, identifying the roots of each individual plant and pinpointing the precise tip of each root — the target for inoculation.
-
 Getting this right was harder than it sounds. In early versions, the model incorrectly detected noise in the image as additional plants, leading to phantom root measurements. After iterative refinement, the model learned to distinguish real roots from artefacts reliably.
 
 <div class="before-after">
@@ -166,7 +144,7 @@ Getting this right was harder than it sounds. In early versions, the model incor
     <div class="ba-image"><img src="/assets/images/projects/end-to-end-inoculation/segmentation-before.png" alt="Spurious detections" /></div>
     <div class="ba-stats">
       <div class="ba-stat"><strong>5 plants detected</strong>3 were noise artefacts</div>
-      <div class="ba-stat"><strong>Corrupted measurements</strong>Root lengths of 8 and 1 px</div>
+      <div class="ba-stat"><strong>Corrupted Measurements</strong>Root lengths of 8 and 1 px</div>
     </div>
   </div>
   <div class="ba-panel">
@@ -174,12 +152,12 @@ Getting this right was harder than it sounds. In early versions, the model incor
     <div class="ba-image"><img src="/assets/images/projects/end-to-end-inoculation/segmentation-after.png" alt="Clean segmentation" /></div>
     <div class="ba-stats">
       <div class="ba-stat"><strong>2 plants detected</strong>Exactly as present in the dish</div>
-      <div class="ba-stat"><strong>Accurate measurements</strong>Root lengths of 569 and 236 px</div>
+      <div class="ba-stat"><strong>Accurate Measurements</strong>Root lengths of 569 and 236 px</div>
     </div>
   </div>
 </div>
 
-Once root tips are located, their coordinates are passed to a robot that moves a pipette to each position and dispenses the inoculant. We designed and tested two approaches to robot control — one based on a classical feedback loop, another using machine learning. The classical approach delivered 100% success with sub-millimetre accuracy and became the basis for the delivered system, while the machine learning approach showed promise for future development.
+Once root tips are located, their coordinates are passed to a robot that moves a pipette to each position and dispenses the inoculant. We designed and tested two approaches to robot control: one based on a classical feedback loop, another using reinforcement learning. The classical approach delivered 100% success with sub-millimetre accuracy and became the basis for the delivered system, while the reinforcement learning approach showed promise for future development.
 
 ---
 
@@ -187,12 +165,18 @@ Once root tips are located, their coordinates are passed to a robot that moves a
 
 The delivered system fully automates a process that previously required constant manual effort. The robot positions itself within a millimetre of each root tip and dispenses inoculant without any human involvement, across every plant in every dish, in every experiment.
 
+<div class="stat-row">
+  <div class="stat-box"><div class="stat-num">10k</div><div class="stat-lbl">Seedlings</div></div>
+  <div class="stat-box"><div class="stat-num">2k+</div><div class="stat-lbl">Petri Dishes</div></div>
+  <div class="stat-box"><div class="stat-num">93.6%</div><div class="stat-lbl">Accuracy</div></div>
+  <div class="stat-box"><div class="stat-num">100%</div><div class="stat-lbl">Inoculation Success</div></div>
+</div>
 <div class="callout">
   <div class="callout-icon">🌱</div>
-  <div class="callout-text">The system achieves a <strong>100% inoculation success rate</strong> with sub-millimetre positioning accuracy — handling over <strong>10,000 seedlings</strong> across <strong>2,000+ Petri dishes</strong> without manual intervention.</div>
+  <div class="callout-text">The system achieves a <strong>100% inoculation success rate</strong> with sub-millimetre positioning accuracy, handling over <strong>10,000 seedlings</strong> across <strong>2,000+ Petri dishes</strong> without manual intervention.</div>
 </div>
 
-Beyond the numbers, the more significant outcome is consistency. Every seedling is inoculated at the same position, with the same timing, under the same conditions. That reproducibility is what makes the experimental results scientifically meaningful — and it was simply not achievable at this scale before.
+Beyond the numbers, the more significant outcome is consistency. Every seedling is inoculated at the same position, with the same timing, under the same conditions. That reproducibility is what makes the experimental results scientifically meaningful, and it was simply not achievable at this scale before.
 
 <script>
   function carouselScrollTo(idx) {
