@@ -335,35 +335,33 @@ The solution that we proposed to our client is a fully autonomous system that us
 
 ## Image Segmentation Model
 
-The segmentation backbone is a **U-Net** trained to classify every pixel in a Petri dish image into one of four classes: *background*, *root*, *seed*, or *shoot*. The model operates purely on raw pixel data. The model performance reflect root segmentation quality **before any post-processing**, not the final root-tip localisations used for inoculation.
+The segmentation backbone is a **U-Net** trained to classify every pixel in a Petri dish image into one of four classes: *background*, *root*, *seed*, or *shoot*. The model operates purely on raw pixel data. The model performance reflect root segmentation quality **before** any post-processing, not the final root-tip localisations used for inoculation.
 
 ### Dataset
 
-The training set consists of **650+ Petri dish images**, each preprocessed through a consistent pipeline before being fed to the model.
+The training set consisted of **650 images** of Petri dishes provided by the client, each preprocessed through a consistent pipeline before being fed to the model.
 
 <div class="seg-dataset-row">
   <div class="seg-dataset-step">
     <div class="seg-ds-icon">✂️</div>
     <div class="seg-ds-label">Crop</div>
-    <div class="seg-ds-desc">Remove imaging artefacts and standardise framing across dishes</div>
+    <div class="seg-ds-desc">Remove Artefacts and Standardise Framing</div>
   </div>
   <div class="seg-dataset-arrow">→</div>
   <div class="seg-dataset-step">
     <div class="seg-ds-icon">⬜</div>
     <div class="seg-ds-label">Pad</div>
-    <div class="seg-ds-desc">Zero-pad to a uniform square dimension</div>
+    <div class="seg-ds-desc">Zero-Pad for Uniform Squares</div>
   </div>
   <div class="seg-dataset-arrow">→</div>
   <div class="seg-dataset-step seg-ds-highlight">
     <div class="seg-ds-icon">🔲</div>
-    <div class="seg-ds-label">Patch — 128×128</div>
-    <div class="seg-ds-desc">Tile into fixed-size patches for model input</div>
+    <div class="seg-ds-label">Patch</div>
+    <div class="seg-ds-desc">128×128 Tiles for Model Input</div>
   </div>
 </div>
 
-### Patch Size: Why 128×128?
-
-The 128×128 patch size was selected as a deliberate trade-off between three competing factors.
+Why 128×128? This patch size was selected as a deliberate trade-off between three competing factors.
 
 <div class="patch-tradeoff">
   <div class="pt-card pt-lose">
@@ -397,14 +395,14 @@ A key challenge was severe class imbalance. Roots, seeds, and shoots occupy only
       <div class="pf-swatch" style="background:#c0392b;"></div>
       <div class="pf-legend-text">
         <strong>Background-only — 90% removed</strong>
-        <span>The dominant class; discarding most of these prevents the model from learning to predict background exclusively</span>
+        <span>The dominant class; discarding most of these prevented the model from learning to predict background exclusively</span>
       </div>
     </div>
     <div class="pf-legend-item">
       <div class="pf-swatch" style="background:#27ae60;"></div>
       <div class="pf-legend-text">
         <strong>Background-only — 10% kept</strong>
-        <span>A small fraction is retained so the model preserves awareness of global dish structure</span>
+        <span>A small fraction was retained so the model preserves awareness of global dish structure</span>
       </div>
     </div>
     <div class="pf-legend-item">
@@ -419,7 +417,7 @@ A key challenge was severe class imbalance. Roots, seeds, and shoots occupy only
 
 ### Training Performance
 
-The charts below show loss and F1-score across training epochs for the final model configuration. These metrics describe **root pixel classification accuracy only** — post-processing steps (instance separation, skeletonisation, root-tip localisation) are applied afterwards and are evaluated separately.
+The charts below show loss and F1-score across training epochs for the final model configuration. These metrics **only** describe root pixel classification accuracy. Post-processing steps (instance separation, skeletonisation, root-tip localisation) are applied afterwards and are evaluated separately.
 
 <div class="chart-grid" style="margin-top:1rem;">
   <div class="chart-card">
@@ -636,40 +634,76 @@ The delivered system provides a scalable, automated alternative to manual plant 
   /* ── TRAINING CHARTS ── */
   (function() {
     const epochs = Array.from({length: 43}, (_, i) => i + 1);
-    const navy  = '#2d3778';
-    const gray  = '#7a7f9a';
-    const lgray = 'rgba(45,55,120,0.07)';
+    const black  = '#1a1a1a';
+    const navy   = '#2d3778';
+    const gray   = '#7a7f9a';
+    const lgray  = 'rgba(45,55,120,0.07)';
+    const yellow = 'rgba(245,184,0,0.18)';
 
-    // Simulate F1 curves: rises from ~0.27, converges ~0.78-0.83, with a drop around epoch 37
-    function makeF1(seed, target, noise) {
-      return epochs.map((e, i) => {
-        let base = target - (target - seed) * Math.exp(-0.18 * i);
-        // dramatic drop around epoch 37-38
-        if (i >= 36 && i <= 38) base -= 0.06 + Math.random() * 0.04;
-        return Math.min(0.92, Math.max(0.1, base + (Math.random() - 0.5) * noise));
+    // ── F1 data: reconstructed from chart ──
+    // Rises steeply epochs 1-5, plateaus ~0.77-0.80, sharp drop epoch 22-24, recovers and holds ~0.78-0.81
+    const trainF1 = [
+      0.60, 0.71, 0.73, 0.76, 0.78, 0.78, 0.77, 0.79, 0.78, 0.79,
+      0.80, 0.79, 0.78, 0.79, 0.80, 0.79, 0.80, 0.80, 0.79, 0.80,
+      0.80, 0.79, 0.52, 0.50, 0.65, 0.75, 0.78, 0.77, 0.76, 0.78,
+      0.79, 0.79, 0.78, 0.79, 0.80, 0.79, 0.79, 0.80, 0.80, 0.79,
+      0.80, 0.80, 0.81
+    ];
+    const valF1 = [
+      0.50, 0.68, 0.74, 0.76, 0.79, 0.77, 0.76, 0.78, 0.77, 0.79,
+      0.79, 0.78, 0.77, 0.78, 0.80, 0.78, 0.79, 0.79, 0.78, 0.79,
+      0.80, 0.78, 0.52, 0.50, 0.63, 0.74, 0.77, 0.76, 0.75, 0.77,
+      0.78, 0.77, 0.77, 0.76, 0.78, 0.77, 0.78, 0.79, 0.77, 0.79,
+      0.77, 0.79, 0.78
+    ];
+
+    // ── Loss data: reconstructed from chart ──
+    // Train: starts ~0.032, drops fast, spikes at epoch 7 (~0.022) and epoch 15 (~0.017),
+    // converges to ~0.005, spike at epoch 43 (~0.010)
+    // Val: starts ~0.016, drops, spikes at epoch 7 (~0.015) and 15 (~0.007), converges ~0.005,
+    // big spike at epoch 43 (~0.029)
+    const trainLoss = [
+      0.0320, 0.0240, 0.0190, 0.0160, 0.0150, 0.0150, 0.0220, 0.0150, 0.0140, 0.0135,
+      0.0130, 0.0130, 0.0130, 0.0135, 0.0170, 0.0140, 0.0125, 0.0120, 0.0120, 0.0118,
+      0.0115, 0.0115, 0.0110, 0.0110, 0.0108, 0.0105, 0.0100, 0.0098, 0.0095, 0.0092,
+      0.0090, 0.0088, 0.0085, 0.0083, 0.0080, 0.0078, 0.0075, 0.0072, 0.0070, 0.0068,
+      0.0065, 0.0063, 0.0100
+    ];
+    const valLoss = [
+      0.0160, 0.0155, 0.0145, 0.0140, 0.0145, 0.0150, 0.0150, 0.0075, 0.0072, 0.0070,
+      0.0068, 0.0068, 0.0065, 0.0065, 0.0075, 0.0065, 0.0060, 0.0058, 0.0058, 0.0058,
+      0.0055, 0.0058, 0.0057, 0.0055, 0.0057, 0.0058, 0.0057, 0.0058, 0.0058, 0.0060,
+      0.0058, 0.0060, 0.0062, 0.0060, 0.0062, 0.0060, 0.0062, 0.0060, 0.0062, 0.0060,
+      0.0060, 0.0062, 0.0290
+    ];
+
+    // Yellow highlight bands as vertical box annotations
+    // F1: one band at epochs 22-24
+    // Loss: bands at epochs 6-8, 14-16, 22-24, 42-44
+    function makeAnnotations(bands) {
+      const out = {};
+      bands.forEach(([x0, x1], i) => {
+        out['band' + i] = {
+          type: 'box',
+          xMin: x0 - 1.5, xMax: x1 - 0.5,
+          backgroundColor: yellow,
+          borderWidth: 0
+        };
       });
-    }
-    // Simulate loss: starts high, drops quickly, slight late divergence
-    function makeLoss(seed, target, noise, divergeFrom) {
-      return epochs.map((e, i) => {
-        let base = seed * Math.exp(-0.22 * i) + target;
-        if (divergeFrom && i > divergeFrom) base += (i - divergeFrom) * 0.00015;
-        return Math.max(target * 0.5, base + (Math.random() - 0.5) * base * noise);
-      });
+      return out;
     }
 
-    const trainF1 = makeF1(0.27, 0.835, 0.018);
-    const valF1   = makeF1(0.24, 0.805, 0.022);
-    const trainLoss = makeLoss(0.035, 0.004, 0.3, null);
-    const valLoss   = makeLoss(0.032, 0.005, 0.3, 30);
-
-    const chartOpts = (yLabel, yMax, yMin) => ({
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { labels: { font: { size: 10 }, boxWidth: 10, color: gray } } },
+    const chartOpts = (yLabel, yMax, yMin, bands) => ({
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { font: { size: 10 }, boxWidth: 12, color: gray } },
+        annotation: { annotations: makeAnnotations(bands) }
+      },
       scales: {
         x: {
-          title: { display: true, text: 'Epoch', color: gray, font: { size: 10 } },
-          ticks: { maxTicksLimit: 10, color: gray, font: { size: 9 } },
+          title: { display: true, text: 'epoch', color: gray, font: { size: 10 } },
+          ticks: { maxTicksLimit: 22, color: gray, font: { size: 9 } },
           grid: { color: lgray }
         },
         y: {
@@ -686,11 +720,11 @@ The delivered system provides a scalable, automated alternative to manual plant 
       data: {
         labels: epochs,
         datasets: [
-          { label: 'Train F1',      data: trainF1, borderColor: navy,    backgroundColor: 'rgba(45,55,120,0.06)', borderWidth: 2, pointRadius: 0, tension: 0.4, fill: true },
-          { label: 'Validation F1', data: valF1,   borderColor: '#27ae60', backgroundColor: 'rgba(39,174,96,0.05)', borderWidth: 2, pointRadius: 0, tension: 0.4, fill: false }
+          { label: 'train',      data: trainF1, borderColor: black, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, tension: 0.3 },
+          { label: 'validation', data: valF1,   borderColor: navy,  backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, tension: 0.3 }
         ]
       },
-      options: chartOpts('F1-Score', 1.0, 0.0)
+      options: chartOpts('f1-score', 0.90, 0.40, [[22, 24]])
     });
 
     new Chart(document.getElementById('lossChart'), {
@@ -698,11 +732,11 @@ The delivered system provides a scalable, automated alternative to manual plant 
       data: {
         labels: epochs,
         datasets: [
-          { label: 'Train Loss',      data: trainLoss, borderColor: navy,    backgroundColor: 'rgba(45,55,120,0.06)', borderWidth: 2, pointRadius: 0, tension: 0.4, fill: true },
-          { label: 'Validation Loss', data: valLoss,   borderColor: '#e74c3c', backgroundColor: 'rgba(231,76,60,0.05)', borderWidth: 2, pointRadius: 0, tension: 0.4, fill: false }
+          { label: 'train',      data: trainLoss, borderColor: black, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, tension: 0.3 },
+          { label: 'validation', data: valLoss,   borderColor: navy,  backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, tension: 0.3 }
         ]
       },
-      options: chartOpts('Loss', 0.04, 0.0)
+      options: chartOpts('loss', 0.035, 0.000, [[6,8],[14,16],[22,24],[42,44]])
     });
   })();
 </script>
