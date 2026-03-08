@@ -26,76 +26,87 @@ featured: true
     margin-bottom: 0.4rem;
   }
 
-  /* ── PIPELINE STEPPER ── */
-  .stepper-nav {
-    display: flex;
-    gap: 0;
-    margin: 2rem 0 0;
-    border-radius: 0.75rem 0.75rem 0 0;
-    overflow: hidden;
-    border: 1.5px solid var(--gray-mid);
-    border-bottom: none;
+  /* ── PIPELINE CAROUSEL ── */
+  .pipeline-carousel-wrap {
+    position: relative;
+    margin: 2rem 0 2.5rem;
   }
-  .stepper-tab {
-    flex: 1;
-    padding: 0.8rem 0.5rem;
+  .pipeline-carousel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    transition: none;
+  }
+  .pipeline-step {
+    background: var(--gray-light);
+    border-radius: 0.75rem;
+    padding: 1.25rem 0.75rem 1.25rem;
     text-align: center;
     cursor: pointer;
-    background: var(--gray-light);
-    border-right: 1.5px solid var(--gray-mid);
-    transition: background 0.2s, color 0.2s;
-    font-family: var(--font-head);
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: var(--gray);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    position: relative;
     user-select: none;
-    line-height: 1.3;
   }
-  .stepper-tab:last-child { border-right: none; }
-  .stepper-tab.active { background: var(--black); color: var(--accent); }
-  .stepper-tab:hover:not(.active) { background: var(--gray-mid); color: var(--black); }
-  .stepper-tab .tab-num {
-    display: block;
-    font-size: 0.6rem;
-    font-weight: 400;
-    color: inherit;
-    opacity: 0.6;
-    margin-bottom: 0.1rem;
+  .pipeline-step:hover  { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(45,55,120,0.12); }
+  .pipeline-step.highlight { background: var(--black); }
+  .step-num {
+    position: absolute; top: 0.5rem; left: 0.75rem;
+    font-family: var(--font-head); font-size: 0.65rem; font-weight: 700;
+    color: var(--gray-mid); letter-spacing: 0.05em;
   }
+  .pipeline-step.highlight .step-num { color: rgba(255,255,255,0.2); }
+  .step-icon { margin-bottom: 0.4rem; }
+  .step-icon img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 0.4rem; display: block; }
+  .step-title { font-family: var(--font-head); font-size: 0.85rem; font-weight: 700; color: var(--black); margin-bottom: 0.2rem; }
+  .pipeline-step.highlight .step-title { color: var(--accent); }
+  .step-label { font-size: 0.7rem; color: var(--gray); font-weight: 300; line-height: 1.4; }
+  .pipeline-step.highlight .step-label { color: rgba(255,255,255,0.5); }
 
-  .stepper-panel {
-    border: 1.5px solid var(--gray-mid);
-    border-radius: 0 0 0.75rem 0.75rem;
-    overflow: hidden;
-    margin-bottom: 2.5rem;
+  /* nav arrows */
+  .carousel-arrow {
+    display: none; /* hidden on desktop, shown on mobile */
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    width: 2rem; height: 2rem;
+    background: var(--black); color: var(--white);
+    border: none; border-radius: 50%; cursor: pointer;
+    font-size: 1rem; line-height: 1;
+    align-items: center; justify-content: center;
+    z-index: 2; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: background 0.2s;
   }
-  .stepper-content {
+  .carousel-arrow:hover { background: var(--accent); color: var(--black); }
+  .carousel-arrow.prev { left: -1rem; }
+  .carousel-arrow.next { right: -1rem; }
+
+  /* dots */
+  .carousel-dots {
     display: none;
-    padding: 1.5rem;
-    background: var(--white);
-    animation: fadeIn 0.25s ease;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
   }
-  .stepper-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-  .stepper-img { border-radius: 0.5rem; overflow: hidden; background: var(--gray-light); }
-  .stepper-img img { width: 100%; display: block; }
-  .stepper-text h4 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; color: var(--black); margin: 0 0 0.5rem; }
-  .stepper-text p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; margin: 0 0 0.75rem; text-align: left; }
-  .stepper-text .detail-row { display: flex; gap: 1rem; margin-top: 0.75rem; flex-wrap: wrap; }
-  .detail-chip {
-    background: var(--gray-light);
-    border-radius: 0.4rem;
-    padding: 0.35rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--black);
-    font-family: var(--font-head);
+  .carousel-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gray-mid); cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
   }
-  .detail-chip.accent { background: var(--accent); color: var(--black); }
+  .carousel-dot.active { background: var(--black); transform: scale(1.4); }
 
-  /* single-column panels for certain steps */
-  .stepper-content.single-col { grid-template-columns: 1fr; }
-  .stepper-content.single-col .stepper-img { max-width: 600px; margin: 0 auto; }
+  @media (max-width: 700px) {
+    .pipeline-carousel {
+      grid-template-columns: repeat(4, calc(100% - 2rem));
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 0.75rem;
+      scrollbar-width: none;
+      padding-bottom: 0.25rem;
+    }
+    .pipeline-carousel::-webkit-scrollbar { display: none; }
+    .pipeline-step { scroll-snap-align: center; min-width: 0; }
+    .carousel-dots { display: flex; }
+  }
 
   /* ── BEFORE / AFTER ── */
   .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
@@ -177,11 +188,9 @@ featured: true
   .info-card.dark h4 { color: var(--accent); }
   .info-card.dark li { color: rgba(255,255,255,0.6); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 700px) {
-    .stepper-content.active, .before-after,
+    .before-after,
     .chart-grid, .code-diff, .two-col-cards { grid-template-columns: 1fr; }
-    .stepper-tab .tab-label { display: none; }
     .stat-row { gap: 0.75rem; }
   }
 </style>
@@ -205,64 +214,38 @@ This project delivers a **fully autonomous end-to-end inoculation system** built
 
 The solution that we proposed to our client is a fully autonomous system that uses the cleints existing infrastructure to capture images, segment the plants from the image, locate the root-tips and communicates these to the robot so it can deliver the inoculation using a PID controller we designed. Click each step to explore what happens and why.
 
-<div class="section-label">Interactive — click a step</div>
-<div class="stepper-nav" id="pipelineNav">
-  <div class="stepper-tab active" onclick="showStep('pipeline',0,4)"><span class="tab-num">01</span><span class="tab-label">Capture</span></div>
-  <div class="stepper-tab" onclick="showStep('pipeline',1,4)"><span class="tab-num">02</span><span class="tab-label">Segmentation</span></div>
-  <div class="stepper-tab" onclick="showStep('pipeline',2,4)"><span class="tab-num">03</span><span class="tab-label">Root Tips</span></div>
-  <div class="stepper-tab" onclick="showStep('pipeline',3,4)"><span class="tab-num">04</span><span class="tab-label">Inoculation</span></div>
-</div>
-<div class="stepper-panel">
-  <div class="stepper-content active" id="pipeline-0">
-    <div class="stepper-img"><img src="/assets/images/projects/end-to-end-inoculation/pipeline-capture.png" alt="Image Capture" /></div>
-    <div class="stepper-text">
-      <h4>Daily Time-Series Photography</h4>
-      <p>Each Petri dish is photographed daily in a controlled imaging environment. The high-resolution grayscale images show plant roots growing downward through agar gel, with the seed at the top and the root tip at the bottom.</p>
-      <p>The time-series nature of the capture enables growth tracking over days, but for inoculation the system uses the most recent image to determine current root tip positions.</p>
-      <div class="detail-row">
-        <span class="detail-chip accent">Grayscale</span>
-        <span class="detail-chip">Daily Cadence</span>
-        <span class="detail-chip">Controlled Lighting</span>
-      </div>
+<div class="pipeline-carousel-wrap">
+  <div class="pipeline-carousel" id="pipelineCarousel">
+    <div class="pipeline-step">
+      <div class="step-num">01</div>
+      <div class="step-icon"><img src="/assets/images/projects/npec-inoculation/pipeline-capture.png" alt="Image Capture" /></div>
+      <div class="step-title">Image Capture</div>
+      <div class="step-label">Daily Photographs of Petri Dishes</div>
+    </div>
+    <div class="pipeline-step highlight">
+      <div class="step-num">02</div>
+      <div class="step-icon"><img src="/assets/images/projects/npec-inoculation/pipeline-segmentation.png" alt="Segmentation" /></div>
+      <div class="step-title">Segmentation</div>
+      <div class="step-label">Detects Roots</div>
+    </div>
+    <div class="pipeline-step highlight">
+      <div class="step-num">03</div>
+      <div class="step-icon"><img src="/assets/images/projects/npec-inoculation/pipeline-roottip.png" alt="Root Tip Detection" /></div>
+      <div class="step-title">Root Tip Detection</div>
+      <div class="step-label">Locate Root-Tips</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">04</div>
+      <div class="step-icon"><img src="/assets/images/projects/npec-inoculation/pipeline-inoculation.gif" alt="Inoculation" /></div>
+      <div class="step-title">Inoculation</div>
+      <div class="step-label">Autonomous Delivery to Root Tips</div>
     </div>
   </div>
-  <div class="stepper-content" id="pipeline-1">
-    <div class="stepper-img"><img src="/assets/images/projects/end-to-end-inoculation/pipeline-segmentation.png" alt="Segmentation mask" /></div>
-    <div class="stepper-text">
-      <h4>Segmentation</h4>
-      <p>A U-Net model trained on labelled Petri dish images predicts a pixel-wise segmentation mask classifying each pixel as <em>background</em>, <em>root</em>, <em>seed</em>, or <em>shoot</em>.</p>
-      <p> Post-processing using more traditional computer vision techniques reinforces .</p>
-      <div class="detail-row">
-        <span class="detail-chip accent">U-Net Architecture</span>
-        <span class="detail-chip">Instance Segmentation</span>
-      </div>
-    </div>
-  </div>
-  <div class="stepper-content" id="pipeline-2">
-    <div class="stepper-img"><img src="/assets/images/projects/end-to-end-inoculation/pipeline-roottip.png" alt="Root tip detection" /></div>
-    <div class="stepper-text">
-      <h4>Root Tip Localisation</h4>
-      <p>After segmentation, post-processing converts the raw masks into actionable robot targets. The instance segmentation step separates individual plants within each dish, then skeletonises each root mask to extract its centreline.</p>
-      <p>The tip of each root skeleton is identified as the inoculation target — a 2D pixel coordinate that is then transformed into the robot's 3D workspace coordinate system via a calibrated camera-to-robot mapping.</p>
-      <div class="detail-row">
-        <span class="detail-chip">Instance separation</span>
-        <span class="detail-chip">Skeletonisation</span>
-        <span class="detail-chip">Coordinate transform</span>
-      </div>
-    </div>
-  </div>
-  <div class="stepper-content" id="pipeline-3">
-    <div class="stepper-img"><img src="/assets/images/projects/end-to-end-inoculation/pipeline-inoculation.gif" alt="Autonomous inoculation" /></div>
-    <div class="stepper-text">
-      <h4>Autonomous Delivery</h4>
-      <p>A PID controller drives the robotic pipette to each detected root tip coordinate. The controller runs a closed-loop correction cycle, reducing positioning error to sub-millimetre precision before dispensing the inoculant.</p>
-      <p>The system sequences through all targets in a dish automatically, then moves to the next dish — enabling fully unattended batch inoculation of thousands of seedlings.</p>
-      <div class="detail-row">
-        <span class="detail-chip accent">100% success rate</span>
-        <span class="detail-chip">PID control</span>
-        <span class="detail-chip">Sub-mm precision</span>
-      </div>
-    </div>
+  <div class="carousel-dots" id="pipelineDots">
+    <div class="carousel-dot active" onclick="carouselScrollTo(0)"></div>
+    <div class="carousel-dot" onclick="carouselScrollTo(1)"></div>
+    <div class="carousel-dot" onclick="carouselScrollTo(2)"></div>
+    <div class="carousel-dot" onclick="carouselScrollTo(3)"></div>
   </div>
 </div>
 
