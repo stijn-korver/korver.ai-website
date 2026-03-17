@@ -1,13 +1,14 @@
 ---
 layout: project
-title: Emotion Detection
-summary: Complete pipeline that detects emotions from Dutch television through generated transcripts.
-category: Natural Language Processing
-tags: [Natural Language Processing, Transformer Models]
-banner: /assets/images/projects/emotion-detection/banner.png
-icon: 💬
-order: 5
-date: October 2025
+lang_en: /en/projects/hospital-readmissions/
+title: Predicting Hospital Readmissions
+summary: System that can identify the key factors that contribute to hospital readmissions within 30 days among diabetic patients.
+category: Predicting
+tags: [Medical, Predictive Modeling]
+banner: /assets/images/projects/hospital-readmissions/banner.png
+icon: 🏥
+order: 2
+date: January 2025
 featured: false
 ---
 

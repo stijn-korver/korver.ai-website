@@ -4,7 +4,9 @@ layout: default
 
 <section class="project-hero">
   <div class="project-hero-content">
-    <a href="{{ '/projects/' | relative_url }}" class="project-back">← Back to Projects</a>
+    <a href="{{ '/en/projects/' | relative_url }}" class="project-back">
+      {% if page.lang == 'nl' %}← Terug naar Projecten{% else %}← Back to Projects{% endif %}
+    </a>
     <p class="section-tag">{{ page.category }}</p>
     <h1>{{ page.title }}</h1>
     <p>{{ page.summary }}</p>

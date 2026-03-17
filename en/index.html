@@ -164,10 +164,10 @@ permalink: /en/
       <p class="section-tag">Work</p>
       <h2 class="section-title">Selected <em>Projects</em></h2>
     </div>
-    <a href="{{ '/projects/' | relative_url }}" class="btn-secondary">All Projects</a>
+    <a href="/en/projects/" class="btn-secondary">All Projects</a>
   </div>
   <div class="projects-grid">
-    {% assign sorted_projects = site.projects | where: 'featured', true | sort: 'date' | reverse | limit: 3 %}
+    {% assign sorted_projects = site.projects_en | where: 'featured', true | sort: 'date' | reverse | limit: 3 %}
     {% for project in sorted_projects %}
     <div class="project-card-wrap reveal">
       <a href="{{ project.url | relative_url }}" class="project-card">

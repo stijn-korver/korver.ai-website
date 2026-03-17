@@ -1,0 +1,519 @@
+---
+layout: default
+title: Capabilities
+permalink: /capabilities/
+---
+
+<style>
+  /* HERO */
+  .cap-hero {
+    padding: 10rem 3rem 5rem;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+  .cap-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(251,195,36,0.1) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .cap-hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .cap-hero .section-tag { color: rgba(255,255,255,0.4); }
+  .cap-hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--white);
+    margin: 0.5rem 0 1.5rem;
+    line-height: 1.05;
+  }
+  .cap-hero h1 em { font-style: normal; color: var(--accent); }
+  .cap-hero-sub {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+    max-width: 520px;
+  }
+
+  /* CAPABILITY BLOCKS */
+  .cap-block {
+    padding: 7rem 3rem;
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 7rem;
+    align-items: start;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .cap-block:last-of-type { border-bottom: none; }
+  .cap-block.alt { background: var(--gray-light); }
+
+  .cap-block-label {
+    position: sticky;
+    top: 7rem;
+  }
+  .cap-num {
+    font-family: var(--font-head);
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--gray-light);
+    letter-spacing: -0.05em;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
+  }
+  .cap-block.alt .cap-num { color: var(--gray-mid); }
+  .cap-block:hover .cap-num { color: var(--accent); }
+  .cap-category {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.75rem;
+  }
+  .cap-name {
+    font-family: var(--font-head);
+    font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .cap-name em { font-style: normal; color: var(--accent-dark); }
+  .cap-summary {
+    font-size: 1rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .cap-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+  }
+  .cap-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--accent);
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+  }
+  .cap-block.alt .cap-tag { background: var(--white); }
+
+  /* DETAIL PANEL */
+  .cap-detail { }
+  .cap-detail-section {
+    margin-bottom: 2.5rem;
+  }
+  .cap-detail-section-title {
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--gray-light);
+  }
+  .cap-block.alt .cap-detail-section-title { border-bottom-color: var(--gray-mid); }
+
+  .cap-bullets {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .cap-bullets li {
+    font-size: 0.9rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .cap-bullets li::before {
+    content: '—';
+    color: var(--accent-dark);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.05em;
+  }
+
+  /* PROJECT PROOF CARDS */
+  .cap-projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .cap-project-card {
+    background: var(--white);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid var(--gray-mid);
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  .cap-block.alt .cap-project-card { background: var(--white); }
+  .cap-project-card:hover {
+    border-color: var(--navy);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(55,71,130,0.1);
+  }
+  .cap-project-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    background: var(--gray-mid);
+  }
+  .cap-project-body { padding: 1rem 1.25rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
+  .cap-project-title {
+    font-family: var(--font-head);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+  }
+  .cap-project-desc {
+    font-size: 0.8rem;
+    color: var(--gray);
+    font-weight: 300;
+    line-height: 1.5;
+    flex: 1;
+  }
+  .cap-project-arrow {
+    font-size: 0.8rem;
+    color: var(--accent-dark);
+    font-weight: 600;
+    margin-top: 0.6rem;
+    display: block;
+  }
+
+  /* SUPPORTING CAPABILITIES */
+  .cap-supporting {
+    background: var(--navy);
+    padding: 7rem 3rem;
+  }
+  .cap-supporting-header {
+    max-width: 580px;
+    margin-bottom: 4rem;
+  }
+  .cap-supporting-header .section-tag { color: rgba(255,255,255,0.4); }
+  .cap-supporting-header h2 {
+    font-family: var(--font-head);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .cap-supporting-header h2 em { font-style: normal; color: var(--accent); }
+  .cap-supporting-header p {
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+  .supporting-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .supporting-card {
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .supporting-card:hover {
+    background: rgba(251,195,36,0.07);
+    border-color: rgba(251,195,36,0.3);
+  }
+  .supporting-title {
+    font-family: var(--font-head);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .supporting-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cap-cta {
+    padding: 6rem 3rem;
+    background: var(--navy);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cap-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(251,195,36,0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .cap-cta-content { position: relative; z-index: 1; }
+  .cap-cta h2 {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .cap-cta h2 em { font-style: normal; color: var(--accent); }
+  .cap-cta .btn-secondary {
+    color: var(--accent);
+    border-color: rgba(251,195,36,0.4);
+  }
+  .cap-cta .btn-secondary:hover { border-color: var(--accent); }
+  .cap-cta p {
+    color: rgba(255,255,255,0.5);
+    font-size: 1.05rem;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+  .cap-cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .cap-hero { padding: 8rem 1.5rem 3rem; }
+    .cap-block { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
+    .cap-block-label { position: relative; top: 0; }
+    .cap-bullets { grid-template-columns: 1fr; }
+    .cap-projects { grid-template-columns: 1fr; }
+    .cap-supporting { padding: 5rem 1.5rem; }
+    .supporting-grid { grid-template-columns: 1fr; }
+    .cap-cta { padding: 4rem 1.5rem; }
+    .cap-cta-actions { flex-direction: column; align-items: center; }
+  }
+</style>
+
+<section class="cap-hero">
+  <div class="cap-hero-content">
+    <p class="section-tag">Capabilities</p>
+    <h1>What we<br/>actually <em>know how to do</em></h1>
+    <p class="cap-hero-sub">Our capabilities are built from delivered projects, not marketing copy. Each one is backed by real work done for real clients.</p>
+  </div>
+</section>
+
+<!-- CAPABILITY 01: COMPUTER VISION -->
+<div class="cap-block" id="computer-vision">
+  <div class="cap-block-label reveal">
+    <div class="cap-num">01</div>
+    <div class="cap-category">Core Capability</div>
+    <h2 class="cap-name">Computer<br/><em>Vision</em></h2>
+    <p class="cap-summary">We build systems that see, interpret, and act on visual information. From image classification to real-time segmentation pipelines integrated into physical processes.</p>
+    <div class="cap-tags">
+      <span class="cap-tag">Image Classification</span>
+      <span class="cap-tag">Segmentation</span>
+      <span class="cap-tag">Detection</span>
+      <span class="cap-tag">Real-time</span>
+    </div>
+  </div>
+  <div class="cap-detail">
+    <div class="cap-detail-section reveal">
+      <div class="cap-detail-section-title">What we build</div>
+      <ul class="cap-bullets">
+        <li>Image classification models trained on domain-specific data</li>
+        <li>Semantic and instance segmentation pipelines</li>
+        <li>Object detection and tracking systems</li>
+        <li>Camera integration and real-time inference</li>
+        <li>Quality control and anomaly detection</li>
+        <li>Custom training data pipelines and labelling workflows</li>
+      </ul>
+    </div>
+    <div class="cap-detail-section reveal">
+      <div class="cap-detail-section-title">Proven in practice</div>
+      <div class="cap-projects">
+        <a href="/en/projects/end-to-end-inoculation/" class="cap-project-card">
+          <img class="cap-project-thumb" src="/assets/images/projects/end-to-end-inoculation/banner.png" alt="End-to-End Inoculation" />
+          <div class="cap-project-body">
+            <div class="cap-project-title">End-to-End Inoculation System</div>
+            <p class="cap-project-desc">Vision-guided robotics for autonomous plant inoculation at NPEC.</p>
+            <span class="cap-project-arrow">View Project</span>
+          </div>
+        </a>
+        <a href="/en/projects/racectrl/" class="cap-project-card">
+          <img class="cap-project-thumb" src="/assets/images/projects/racectrl/banner.png" alt="RaceCTRL" />
+          <div class="cap-project-body">
+            <div class="cap-project-title">RaceCTRL</div>
+            <p class="cap-project-desc">Collision detection classifier for motorsport officiating.</p>
+            <span class="cap-project-arrow">View Project</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPABILITY 02: INTELLIGENT AUTOMATION -->
+<div class="cap-block alt" id="automation">
+  <div class="cap-block-label reveal">
+    <div class="cap-num">02</div>
+    <div class="cap-category">Core Capability</div>
+    <h2 class="cap-name">Intelligent<br/><em>Automation</em></h2>
+    <p class="cap-summary">We automate processes that are too complex for simple scripting but too specific for off-the-shelf tools. Integrating sensors, data streams, and decision logic into end-to-end systems.</p>
+    <div class="cap-tags">
+      <span class="cap-tag">Process Automation</span>
+      <span class="cap-tag">Time-Series</span>
+      <span class="cap-tag">Robotics</span>
+      <span class="cap-tag">Integration</span>
+    </div>
+  </div>
+  <div class="cap-detail">
+    <div class="cap-detail-section reveal">
+      <div class="cap-detail-section-title">What we build</div>
+      <ul class="cap-bullets">
+        <li>End-to-end process workflow automations</li>
+        <li>Time-series analysis and forecasting pipelines</li>
+        <li>Sensor and hardware integration layers</li>
+        <li>Robotic process orchestration</li>
+        <li>Data ingestion and transformation pipelines</li>
+        <li>Monitoring systems with configurable alerting</li>
+      </ul>
+    </div>
+    <div class="cap-detail-section reveal">
+      <div class="cap-detail-section-title">Proven in practice</div>
+      <div class="cap-projects">
+        <a href="/en/projects/end-to-end-inoculation/" class="cap-project-card">
+          <img class="cap-project-thumb" src="/assets/images/projects/end-to-end-inoculation/banner.png" alt="End-to-End Inoculation System" />
+          <div class="cap-project-body">
+            <div class="cap-project-title">End-to-End Inoculation System</div>
+            <p class="cap-project-desc">Full pipeline from vision detection to robotic actuation — zero manual steps.</p>
+            <span class="cap-project-arrow">View Project</span>
+          </div>
+        </a>
+        <div class="cap-project-card" style="border-style: dashed; opacity: 0.5; pointer-events: none;">
+          <div class="cap-project-body" style="padding-top: 1.5rem;">
+            <div class="cap-project-title">Finance Time-Series Project</div>
+            <p class="cap-project-desc">Predictive pipeline for chip industry stock data. Available on request.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPABILITY 03: INSIGHT & COMMUNICATION -->
+<div class="cap-block" id="insight">
+  <div class="cap-block-label reveal">
+    <div class="cap-num">03</div>
+    <div class="cap-category">Core Capability</div>
+    <h2 class="cap-name">Insight &<br/><em>Communication</em></h2>
+    <p class="cap-summary">Technical work only delivers value when it can be understood and acted on. We translate complex systems and findings into dashboards, reports, and presentations that hold up in the boardroom.</p>
+    <div class="cap-tags">
+      <span class="cap-tag">Research</span>
+      <span class="cap-tag">Dashboards</span>
+      <span class="cap-tag">Storytelling</span>
+      <span class="cap-tag">Stakeholder Reporting</span>
+    </div>
+  </div>
+  <div class="cap-detail">
+    <div class="cap-detail-section reveal">
+      <div class="cap-detail-section-title">What we deliver</div>
+      <ul class="cap-bullets">
+        <li>Research with rigorous methodology and honest findings</li>
+        <li>Interactive dashboards and data visualisations</li>
+        <li>Stakeholder-ready reports that explain technical results</li>
+        <li>Model explainability layers for high-stakes decisions</li>
+        <li>Presentation design and delivery support</li>
+        <li>Documentation that lets your team take ownership</li>
+      </ul>
+    </div>
+    <div class="cap-detail-section reveal">
+      <div class="cap-detail-section-title">Proven in practice</div>
+      <div class="cap-projects">
+        <a href="/en/projects/sustainable-travel/" class="cap-project-card">
+          <img class="cap-project-thumb" src="/assets/images/projects/sustainable-travel/banner.png" alt="Travel More Sustainably" />
+          <div class="cap-project-body">
+            <div class="cap-project-title">Travel More Sustainably</div>
+            <p class="cap-project-desc">Research translating complex emissions data into an actionable calendar recommendation for Formula One.</p>
+            <span class="cap-project-arrow">View Project</span>
+          </div>
+        </a>
+        <a href="/en/projects/racectrl/" class="cap-project-card">
+          <img class="cap-project-thumb" src="/assets/images/projects/racectrl/banner.png" alt="RaceCTRL" />
+          <div class="cap-project-body">
+            <div class="cap-project-title">RaceCTRL</div>
+            <p class="cap-project-desc">System designed from the ground up to be understood and trusted by non-technical race officials.</p>
+            <span class="cap-project-arrow">View Project</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUPPORTING CAPABILITIES -->
+<div class="cap-supporting">
+  <div class="cap-supporting-header reveal">
+    <p class="section-tag">Supporting Capabilities</p>
+    <h2>Applied where<br/><em>the problem demands it</em></h2>
+    <p>Beyond our three core areas, we bring working knowledge in these domains. Used where a project requires it, never as the main pitch.</p>
+  </div>
+  <div class="supporting-grid">
+    <div class="supporting-card reveal">
+      <div class="supporting-title">Predictive Modelling</div>
+      <p class="supporting-desc">Regression, classification, and probabilistic forecasting for structured data problems. Applied in medical, financial, and operational contexts.</p>
+    </div>
+    <div class="supporting-card reveal">
+      <div class="supporting-title">Natural Language Processing</div>
+      <p class="supporting-desc">Text classification, sentiment analysis, and transformer-based modelling. We know the landscape well enough to know when to use it and when not to.</p>
+    </div>
+    <div class="supporting-card reveal">
+      <div class="supporting-title">Data Engineering</div>
+      <p class="supporting-desc">Pipelines, schema design, and data preparation that make downstream modelling actually possible. Often the unglamorous but essential first step.</p>
+    </div>
+    <div class="supporting-card reveal">
+      <div class="supporting-title">Rapid Prototyping</div>
+      <p class="supporting-desc">Fast, functional proofs-of-concept that answer the real question: can this be done, and is it worth doing? Before committing to a full build.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cap-cta">
+  <div class="cap-cta-content reveal">
+    <h2>Does your problem <em>fit?</em></h2>
+    <p>If you can see your challenge in these capabilities, it's worth a conversation. We'll tell you honestly if we're the right fit.</p>
+    <div class="cap-cta-actions">
+      <a href="/contact/" class="btn-primary">Get in Touch</a>
+      <a href="/services/" class="btn-secondary">How We Work</a>
+    </div>
+  </div>
+</div>

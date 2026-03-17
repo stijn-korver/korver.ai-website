@@ -7,9 +7,12 @@ instagram_username: korver.ai
 
 # Collections
 collections:
-  projects:
+  projects_en:
     output: true
-    permalink: /projects/:name/
+    permalink: /en/projects/:name/
+  projects_nl:
+    output: true
+    permalink: /nl/projects/:name/
 
 # Build Settings
 remote_theme: null
@@ -26,6 +29,18 @@ defaults:
       path: "nl"
     values:
       lang: nl
+  - scope:
+      path: ""
+      type: projects_en
+    values:
+      lang: en
+      layout: project
+  - scope:
+      path: ""
+      type: projects_nl
+    values:
+      lang: nl
+      layout: project
 
 # Exclude from Processing
 exclude:

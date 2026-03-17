@@ -7,7 +7,7 @@
     <li><a href="{% if page.lang == 'nl' %}/nl/about/{% else %}/en/about/{% endif %}">{% if page.lang == 'nl' %}Wie We Zijn{% else %}Who We Are{% endif %}</a></li>
     <li><a href="{% if page.lang == 'nl' %}/nl/services/{% else %}/en/services/{% endif %}">{% if page.lang == 'nl' %}Wat We Doen{% else %}What We Do{% endif %}</a></li>
     <li><a href="/capabilities/">Capabilities</a></li>
-    <li><a href="/projects/">Projects</a></li>
+    <li><a href="{% if page.lang == 'nl' %}/nl/projects/{% else %}/en/projects/{% endif %}">Projects</a></li>
     <li><a href="/contact/" class="nav-cta">{% if page.lang == 'nl' %}Contact{% else %}Get in Touch{% endif %}</a></li>
     <li class="nav-lang-toggle">
       <a href="{{ page.lang_nl | default: '/nl/' }}" class="nav-lang-pill{% if page.lang == 'nl' %} active{% endif %}">NL</a>
@@ -30,6 +30,6 @@
   <a href="{% if page.lang == 'nl' %}/nl/about/{% else %}/en/about/{% endif %}">{% if page.lang == 'nl' %}Wie We Zijn{% else %}Who We Are{% endif %}</a>
   <a href="{% if page.lang == 'nl' %}/nl/services/{% else %}/en/services/{% endif %}">{% if page.lang == 'nl' %}Wat We Doen{% else %}What We Do{% endif %}</a>
   <a href="/capabilities/">Capabilities</a>
-  <a href="/projects/">Projects</a>
+  <a href="{% if page.lang == 'nl' %}/nl/projects/{% else %}/en/projects/{% endif %}">Projects</a>
   <a href="/contact/">{% if page.lang == 'nl' %}Contact{% else %}Get in Touch{% endif %}</a>
 </div>

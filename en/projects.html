@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Projects
-permalink: /projects/
+permalink: /en/projects/
+lang: en
 ---
 
 <style>
@@ -161,13 +162,13 @@ permalink: /projects/
   <div class="projects-controls">
     <div class="filter-group" id="filterGroup">
       <button class="filter-btn active" data-filter="all">All</button>
-      {% assign all_tags = site.projects | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+      {% assign all_tags = site.projects_en | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
       {% for tag in all_tags %}
         <button class="filter-btn" data-filter="{{ tag | strip }}">{{ tag | strip }}</button>
       {% endfor %}
     </div>
     <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
-      <p class="projects-count"><span id="visibleCount">{{ site.projects | size }}</span> of {{ site.projects | size }} projects</p>
+      <p class="projects-count"><span id="visibleCount">{{ site.projects_en | size }}</span> of {{ site.projects_en | size }} projects</p>
       <div class="sort-group">
         <span class="sort-label">Sort by</span>
         <select class="sort-select" id="sortSelect">
@@ -181,7 +182,7 @@ permalink: /projects/
 
   <!-- GRID -->
   <div class="projects-all-grid" id="projectsGrid">
-    {% assign sorted_projects = site.projects | sort: 'order' %}
+    {% assign sorted_projects = site.projects_en | sort: 'order' %}
     {% for project in sorted_projects %}
     <div class="project-card-wrap reveal"
          data-tags="{{ project.tags | join: ',' }}"
