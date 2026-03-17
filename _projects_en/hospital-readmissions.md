@@ -1,5 +1,6 @@
 ---
-layout: project`
+layout: project
+lang: en
 lang_nl: /nl/projects/hospital-readmissions/
 title: Predicting Hospital Readmissions
 summary: System that can identify the key factors that contribute to hospital readmissions within 30 days among diabetic patients.

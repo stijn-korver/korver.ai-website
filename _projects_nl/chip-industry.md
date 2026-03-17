@@ -1,5 +1,6 @@
 ---
 layout: project
+lang: nl
 lang_en: /en/projects/chip-industry/
 title: Predicting the Chip Industry
 summary: Application that can predict the daily closing stock prices of companies operating in the chip industry.

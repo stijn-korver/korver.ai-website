@@ -1,5 +1,6 @@
 ---
 layout: project
+lang: nl
 lang_en: /en/projects/racectrl/
 title: RaceCTRL
 summary: Platform with image classification system that detects collisions in motorsport to increase stewarding consistency.

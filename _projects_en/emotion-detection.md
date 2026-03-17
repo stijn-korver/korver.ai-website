@@ -1,5 +1,6 @@
 ---
 layout: project
+lang: en
 lang_nl: /nl/projects/emotion-detection/
 title: Emotion Detection
 summary: Complete pipeline that detects emotions from Dutch television through generated transcripts.
