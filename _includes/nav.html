@@ -10,8 +10,8 @@
     <li><a href="/projects/">Projects</a></li>
     <li><a href="/contact/" class="nav-cta">{% if page.lang == 'nl' %}Contact{% else %}Get in Touch{% endif %}</a></li>
     <li class="nav-lang-toggle">
-      <a href="{{ page.lang_nl | default: '/nl/' }}" class="nav-lang-pill {% if page.lang == 'nl' %}active{% endif %}" title="Nederlands">🇳🇱</a>
-      <a href="{{ page.lang_en | default: '/en/' }}" class="nav-lang-pill {% unless page.lang == 'nl' %}active{% endunless %}" title="English">🇬🇧</a>
+<a href="{{ page.lang_nl | default: '/nl/' }}" class="nav-lang-pill{% if page.lang == 'nl' %} active{% endif %}" title="Nederlands">🇳🇱</a>
+<a href="{{ page.lang_en | default: '/en/' }}" class="nav-lang-pill{% if page.lang == 'en' %} active{% endif %}" title="English">🇬🇧</a>
     </li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
@@ -27,7 +27,7 @@
   <a href="/projects/">Projects</a>
   <a href="/contact/">{% if page.lang == 'nl' %}Contact{% else %}Get in Touch{% endif %}</a>
   <div class="nav-lang-toggle" style="justify-content:center;">
-    <a href="{{ page.lang_nl | default: '/nl/' }}" class="nav-lang-pill {% if page.lang == 'nl' %}active{% endif %}" title="Nederlands">🇳🇱</a>
-    <a href="{{ page.lang_en | default: '/en/' }}" class="nav-lang-pill {% unless page.lang == 'nl' %}active{% endunless %}" title="English">🇬🇧</a>
+<a href="{{ page.lang_nl | default: '/nl/' }}" class="nav-lang-pill{% if page.lang == 'nl' %} active{% endif %}" title="Nederlands">🇳🇱</a>
+<a href="{{ page.lang_en | default: '/en/' }}" class="nav-lang-pill{% if page.lang == 'en' %} active{% endif %}" title="English">🇬🇧</a>
   </div>
 </div>
