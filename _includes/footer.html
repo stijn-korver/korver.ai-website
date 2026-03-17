@@ -1,23 +1,29 @@
 <div class="footer-company">
   <div class="footer-company-header reveal">
-    <p class="section-tag">Company</p>
-    <h2 class="section-title">Registered in<br/><em>the Netherlands</em></h2>
+    <p class="section-tag">{% if page.lang == 'nl' %}Bedrijf{% else %}Company{% endif %}</p>
+    <h2 class="section-title">
+      {% if page.lang == 'nl' %}
+        Geregistreerd in<br/><em>Nederland</em>
+      {% else %}
+        Registered in<br/><em>the Netherlands</em>
+      {% endif %}
+    </h2>
   </div>
   <div class="footer-company-grid reveal">
     <div class="company-info-item">
-      <div class="company-info-label">Address</div>
-      <div class="company-info-value">Willem van Oranjelaan 79,<br/>5211 CS, 's-Hertogenbosch,<br/>The Netherlands</div>
+      <div class="company-info-label">{% if page.lang == 'nl' %}Adres{% else %}Address{% endif %}</div>
+      <div class="company-info-value">Willem van Oranjelaan 79,<br/>5211 CS, 's-Hertogenbosch,<br/>{% if page.lang == 'nl' %}Nederland{% else %}The Netherlands{% endif %}</div>
     </div>
     <div class="company-info-item">
-      <div class="company-info-label">KVK Number</div>
+      <div class="company-info-label">{% if page.lang == 'nl' %}KVK Nummer{% else %}KVK Number{% endif %}</div>
       <a href="https://www.kvk.nl/bestellen/#/97486663000062723944" class="company-info-value" target="_blank">97486663</a>
     </div>
     <div class="company-info-item">
-      <div class="company-info-label">Phone</div>
+      <div class="company-info-label">{% if page.lang == 'nl' %}Telefoon{% else %}Phone{% endif %}</div>
       <a href="tel:+31621931053" class="company-info-value">+31 6 21 93 10 53</a>
     </div>
     <div class="company-info-item">
-      <div class="company-info-label">Email</div>
+      <div class="company-info-label">{% if page.lang == 'nl' %}E-mail{% else %}Email{% endif %}</div>
       <a href="mailto:hello@korver.ai" class="company-info-value">hello@korver.ai</a>
     </div>
   </div>
@@ -27,5 +33,5 @@
   <a href="{{ '/' | relative_url }}" class="footer-logo">
     <img src="{{ '/assets/images/branding/wordmark_navy.png' | relative_url }}" alt="Korver AI Solutions" height="24" />
   </a>
-  <p class="footer-copy">© 2026 Korver AI Solutions — All rights reserved</p>
+  <p class="footer-copy">{% if page.lang == 'nl' %}© 2026 Korver AI Solutions — Alle rechten voorbehouden{% else %}© 2026 Korver AI Solutions — All rights reserved{% endif %}</p>
 </footer>
