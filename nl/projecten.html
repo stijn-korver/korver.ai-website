@@ -150,7 +150,7 @@ lang_en: /en/projects/
 <!-- HERO -->
 <section class="projects-page-hero">
   <div class="projects-page-hero-content">
-    <p class="section-tag">Work</p>
+    <p class="section-tag">Werk</p>
     <h1>Alle <em>Projecten</em></h1>
     <p class="projects-page-hero-sub">Een volledig overzicht van afgeronde projecten. Van computervisie en intelligente automatisering tot onderzoek en meer.</p>
   </div>
@@ -169,13 +169,13 @@ lang_en: /en/projects/
       {% endfor %}
     </div>
     <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
-      <p class="projects-count"><span id="visibleCount">{{ site.projects_en | size }}</span> of {{ site.projects_en | size }} projects</p>
+      <p class="projects-count"><span id="visibleCount">{{ site.projects_nl | size }}</span> of {{ site.projects_nl | size }} projects</p>
       <div class="sort-group">
-        <span class="sort-label">Sort by</span>
+        <span class="sort-label">Sorteer op</span>
         <select class="sort-select" id="sortSelect">
-          <option value="date-desc">Newest first</option>
-          <option value="date-asc">Oldest first</option>
-          <option value="title">Alphabetical</option>
+          <option value="date-desc">Nieuw eerst</option>
+          <option value="date-asc">Oud eerst</option>
+          <option value="title">Alfabetisch</option>
         </select>
       </div>
     </div>
@@ -183,7 +183,7 @@ lang_en: /en/projects/
 
   <!-- GRID -->
   <div class="projects-all-grid" id="projectsGrid">
-    {% assign sorted_projects = site.projects_en | sort: 'order' %}
+    {% assign sorted_projects = site.projects_nl | sort: 'order' %}
     {% for project in sorted_projects %}
     <div class="project-card-wrap reveal"
          data-tags="{{ project.tags | join: ',' }}"
@@ -209,7 +209,7 @@ lang_en: /en/projects/
       </a>
     </div>
     {% endfor %}
-    <div class="no-results" id="noResults">No projects match this filter.</div>
+    <div class="no-results" id="noResults">Geen projecten die aan dit filter voldoen.</div>
   </div>
 
 </div>
