@@ -1,7 +1,7 @@
 ---
 layout: project
 lang: en
-lang_nl: /nl/projects/sustainable-travel/
+lang_nl: /nl/projecten/duurzaam-reizen/
 title: Travel More Sustainably
 summary: Research on how Formula One can significantly reduce their emissions by reordering the calendar.
 category: Research

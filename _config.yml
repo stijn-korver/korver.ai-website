@@ -12,7 +12,7 @@ collections:
     permalink: /en/projects/:name/
   projects_nl:
     output: true
-    permalink: /nl/projects/:name/
+    permalink: /nl/projecten/:name/
 
 # Build Settings
 remote_theme: null
