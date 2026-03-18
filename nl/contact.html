@@ -377,7 +377,8 @@ lang_en: /en/contact/
     <div class="contact-form-success" id="contactSuccess" style="display:none;">
       <div class="contact-success-icon">✓</div>
       <h3 class="contact-success-title">Bericht verstuurd!</h3>
-      <p class="contact-success-desc">Bedankt voor je bericht. We nemen binnen één werkdag contact met je op.</p>
+      <p class="contact-success-desc">Bedankt voor je bericht. We nemen binnen drie werkdagen contact met je op.</p>
+      <button onclick="document.getElementById('contactSuccess').style.display='none'; document.getElementById('contactForm').reset(); document.getElementById('contactForm').style.display='flex';" class="btn-secondary" style="margin-top:1.5rem; border:none; cursor:pointer;">Nog een bericht sturen</button>
     </div>
     <script>
       document.getElementById('contactForm').addEventListener('submit', async function(e) {
