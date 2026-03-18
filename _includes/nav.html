@@ -1,5 +1,5 @@
 <nav id="navbar">
-  <a href="{{ '/' | relative_url }}" class="nav-logo">
+  <a href="{% if page.lang == 'nl' %}/nl/{% else %}/en/{% endif %}" class="nav-logo">
     <img src="{{ '/assets/images/branding/wordmark_navy.png' | relative_url }}" alt="Korver AI Solutions" height="28" />
   </a>
   <ul class="nav-links">

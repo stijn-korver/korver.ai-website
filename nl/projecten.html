@@ -151,8 +151,8 @@ lang_en: /en/projects/
 <section class="projects-page-hero">
   <div class="projects-page-hero-content">
     <p class="section-tag">Work</p>
-    <h1>All <em>Projects</em></h1>
-    <p class="projects-page-hero-sub">A full overview of completed work. Spanning computer vision, intelligent automation, research, and more.</p>
+    <h1>Alle <em>Projecten</em></h1>
+    <p class="projects-page-hero-sub">Een volledig overzicht van afgeronde projecten. Van computervisie en intelligente automatisering tot onderzoek en meer.</p>
   </div>
 </section>
 
@@ -163,7 +163,7 @@ lang_en: /en/projects/
   <div class="projects-controls">
     <div class="filter-group" id="filterGroup">
       <button class="filter-btn active" data-filter="all">All</button>
-      {% assign all_tags = site.projects_en | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+      {% assign all_tags = site.projects_nl | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
       {% for tag in all_tags %}
         <button class="filter-btn" data-filter="{{ tag | strip }}">{{ tag | strip }}</button>
       {% endfor %}
