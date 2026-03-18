@@ -271,6 +271,53 @@ lang_nl: /nl/contact/
     color: var(--accent-dark);
   }
 
+
+  /* CONTACT FORM */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .contact-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .contact-form-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+  .contact-form-input {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--navy);
+    background: var(--white);
+    border: 1.5px solid var(--gray-mid);
+    border-radius: 0.625rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .contact-form-input:focus { border-color: var(--navy); }
+  .contact-form-input::placeholder { color: var(--gray-mid); }
+  .contact-form-textarea {
+    min-height: 130px;
+    resize: vertical;
+    line-height: 1.6;
+  }
+  .contact-form-submit {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+
   @media (max-width: 900px) {
     .contact-page-hero { padding: 8rem 1.5rem 3rem; }
     .contact-page-body { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
@@ -323,40 +370,27 @@ lang_nl: /nl/contact/
   </div>
 
   <div class="contact-page-right reveal">
-    <h2>What to include in your message</h2>
-    <p>You don't need a full brief — a rough description is enough to get started. These questions help us give you a useful first response.</p>
-    <ul class="contact-checklist">
-      <li>
-        <div class="contact-checklist-num">1</div>
-        <div class="contact-checklist-text">
-          <strong>What's the problem?</strong>
-          What are you currently doing manually, inconsistently, or not at all, that you believe could be automated or improved with AI?
-        </div>
-      </li>
-      <li>
-        <div class="contact-checklist-num">2</div>
-        <div class="contact-checklist-text">
-          <strong>What data do you have?</strong>
-          Images, sensor readings, time-series logs, documents, anything relevant. Volume and format help us assess feasibility quickly.
-        </div>
-      </li>
-      <li>
-        <div class="contact-checklist-num">3</div>
-        <div class="contact-checklist-text">
-          <strong>What does success look like?</strong>
-          A rough idea of the outcome — whether that's a system, a report, a dashboard, or something else entirely.
-        </div>
-      </li>
-      <li>
-        <div class="contact-checklist-num">4</div>
-        <div class="contact-checklist-text">
-          <strong>What's your timeline?</strong>
-          Even a rough sense, "within 3 months" or "no rush, exploring options", helps us prioritise.
-        </div>
-      </li>
-    </ul>
+    <h2>Send us a message</h2>
+    <p>Fill in the form below and we'll get back to you within one business day.</p>
+    <form class="contact-form" action="https://formspree.io/f/mvzwdrql" method="POST">
+      <div class="contact-form-group">
+        <label class="contact-form-label" for="name">Name</label>
+        <input class="contact-form-input" type="text" id="name" name="name" placeholder="Your name" required />
+      </div>
+      <div class="contact-form-group">
+        <label class="contact-form-label" for="email">Email address</label>
+        <input class="contact-form-input" type="email" id="email" name="email" placeholder="your@email.com" required />
+      </div>
+      <div class="contact-form-group">
+        <label class="contact-form-label" for="message">Message</label>
+        <textarea class="contact-form-input contact-form-textarea" id="message" name="message" placeholder="Tell us about your project or question..." required></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="New enquiry via korver.ai" />
+      <input type="hidden" name="_next" value="https://korver.ai/en/contact/?sent=true" />
+      <button type="submit" class="btn-primary contact-form-submit">Send Message →</button>
+    </form>
     <div class="contact-divider"></div>
-    <p class="contact-page-right-footer">Not sure if your problem is a fit? Read about our <a href="/capabilities/">capabilities</a> or <a href="/services/">how we work</a> first, or just reach out and ask.</p>
+    <p class="contact-page-right-footer">Not sure if your problem is a fit? Read about our <a href="/en/capabilities/">capabilities</a> or <a href="/en/services/">how we work</a> first, or just reach out and ask.</p>
   </div>
 </div>
 
@@ -364,19 +398,19 @@ lang_nl: /nl/contact/
 <div class="contact-explore">
   <h2>Not ready to reach out yet?</h2>
   <div class="contact-explore-grid">
-    <a href="/services/" class="contact-explore-card">
+    <a href="/en/services/" class="contact-explore-card">
       <div class="contact-explore-label">What We Do</div>
       <div class="contact-explore-title">How a project works</div>
       <p class="contact-explore-desc">Process, engagement models, and what makes custom-built different.</p>
       <span class="contact-explore-arrow">Read More</span>
     </a>
-    <a href="/capabilities/" class="contact-explore-card">
+    <a href="/en/capabilities/" class="contact-explore-card">
       <div class="contact-explore-label">Capabilities</div>
       <div class="contact-explore-title">What we know how to build</div>
       <p class="contact-explore-desc">Computer vision, intelligent automation, insight & communication.</p>
       <span class="contact-explore-arrow">Read More</span>
     </a>
-    <a href="/projects/" class="contact-explore-card">
+    <a href="/en/projects/" class="contact-explore-card">
       <div class="contact-explore-label">Projects</div>
       <div class="contact-explore-title">Proof in practice</div>
       <p class="contact-explore-desc">Real work done for real clients. See what we've delivered.</p>
