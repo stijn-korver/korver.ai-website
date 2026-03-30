@@ -360,6 +360,22 @@ lang_nl: /nl/over-ons/
   }
   a.company-info-value:hover { opacity: 0.7; }
 
+  .about-founder-wrap {
+    max-width: 680px;
+  }
+  .about-founder-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-radius: 1.25rem;
+  }
+  .about-founder-card .person-photo {
+    aspect-ratio: 3 / 4;
+    border-radius: 0;
+  }
+  .about-founder-card .person-bio {
+    margin-bottom: 0.75rem;
+  }
+
   /* CTA */
   .about-cta {
     background: var(--navy);
@@ -427,8 +443,8 @@ lang_nl: /nl/over-ons/
 <section class="about-page-hero">
   <div class="about-page-hero-content">
     <p class="section-tag">About</p>
-    <h1>Built to solve<br/><em>problems</em></h1>
-    <p class="about-hero-sub">As an independent AI consultancy, we design and build custom systems for organisations where generic tools aren't good enough.</p>
+    <h1>One person.<br/><em>Honest work.</em></h1>
+    <p class="about-hero-sub">Korver AI Solutions is just me — Stijn Korver. No inflated team page, no outsourced delivery. You talk to me, I build it, you own it.</p>
   </div>
 </section>
 
@@ -440,20 +456,20 @@ lang_nl: /nl/over-ons/
         style="width: 45%; position: relative; z-index: 2;" />
   </div>
   <div class="about-mission-text reveal">
-    <p class="section-tag">Mission</p>
-    <h2>AI that actually<br/><em>fits the problem</em></h2>
-    <p>Most organisations that want to use AI face the same frustration: the tools that exist weren't built for their specific situation. They're either too generic, too expensive, or too difficult to integrate into real workflows.</p>
-    <p>Korver AI Solutions exists to close that gap. We work with lcoal businesses, mid-size organisations, and research institutions to build AI solutions that are purpose-built, fully integrated, and explainable to every stakeholder who needs to trust them.</p>
-    <p>We don't sell licences. We don't offer subscriptions to platforms. We build things that solve specific problems and we hand them over completely.</p>
+    <p class="section-tag">The Story</p>
+    <h2>Started in a classroom,<br/><em>built for the real world</em></h2>
+    <p>I founded Korver AI Solutions in June 2025 because I kept hitting the same frustration: school projects would reach a genuinely useful point, and then stop. The scope ended, the semester moved on, and the work sat in a folder. I wanted to keep building — and to build things that actually get used.</p>
+    <p>Before getting into AI, I spent four years in customer-facing roles — customer service, business analysis, customer account management. That background matters more than it might sound. I've sat on the operations side of a business. I know what it feels like when a process is broken, when a report takes too long, when something that should be automatic isn't. That's what I build solutions for.</p>
+    <p>I'm two years into a Bachelor in Applied Data Science & AI in Breda, which keeps the technical side sharp. The rest of the time I'm here — in 's-Hertogenbosch — building, writing, and figuring out which problems are actually worth solving.</p>
   </div>
 </div>
 
 <!-- PRINCIPLES -->
 <div class="about-principles">
   <div class="about-principles-header reveal">
-    <p class="section-tag">How We Operate</p>
-    <h2>Four principles<br/><em>we don't compromise on</em></h2>
-    <p>These aren't values on a poster. They're constraints that shape how we work on every project.</p>
+    <p class="section-tag">How I Work</p>
+    <h2>Four things<br/><em>I don't compromise on</em></h2>
+    <p>These aren't values on a poster. They're the constraints that shape how every project gets built — whether it's a two-week automation or a months-long pipeline.</p>
   </div>
   <div class="principles-grid">
     <div class="principle-card reveal">
@@ -479,147 +495,51 @@ lang_nl: /nl/over-ons/
   </div>
 </div>
 
-<!-- WHYINDEPENDENT -->
+<!-- WHY ONE PERSON -->
 <div class="about-lean">
   <div class="about-lean-visual reveal">
     <div class="about-lean-stat">
-      <div class="about-lean-stat-num">6+</div>
-      <div class="about-lean-stat-label">Projects completed across 4+ research areas</div>
+      <div class="about-lean-stat-num">4+</div>
+      <div class="about-lean-stat-label">Years in customer-facing business roles</div>
     </div>
     <div class="about-lean-stat">
-      <div class="about-lean-stat-num">3+</div>
-      <div class="about-lean-stat-label">Years of applied AI development experience</div>
+      <div class="about-lean-stat-num">2+</div>
+      <div class="about-lean-stat-label">Years studying Applied Data Science & AI</div>
     </div>
     <div class="about-lean-stat">
       <div class="about-lean-stat-num">100%</div>
-      <div class="about-lean-stat-label">Independent. No investor agenda, no billable-hour pressure</div>
+      <div class="about-lean-stat-label">You work directly with the person building it</div>
     </div>
   </div>
   <div class="about-lean-text reveal">
-    <p class="section-tag">Why Independent?</p>
-    <h2>Senior expertise<br/><em>without the overhead</em></h2>
-    <p>Large consultancies bring large teams, long timelines, and fees structured around both. For organisations that need a specific, well-defined AI system built properly, that model often doesn't make sense.</p>
-    <p>Korver AI Solutions operates lean by design. Every project is handled with full technical accountability, no delegation to junior staff, no work lost in handoffs between departments. You work directly with the person who builds the system.</p>
-    <p>That's not a limitation. For the problems we take on, it's an advantage.</p>
-    <a href="/en/services/" class="btn-primary">How We Work</a>
+    <p class="section-tag">Why One Person?</p>
+    <h2>No handoffs.<br/><em>No surprises.</em></h2>
+    <p>When you work with a larger agency, your project gets scoped by one person, built by another, and handed over by a third. Things get lost. Context gets dropped. You end up explaining the same thing multiple times to people who weren't in the original conversation.</p>
+    <p>With me, that doesn't happen. I handle the discovery, the build, and the handover. Every decision gets made with the full picture in mind, because I'm the only one holding it.</p>
+    <p>That's not a limitation — for the kind of focused, practical work I do, it's exactly the right model.</p>
+    <a href="/en/services/" class="btn-primary">How I Work</a>
   </div>
 </div>
 
-<!-- TEAM -->
+<!-- FOUNDER -->
 <div class="about-team" id="team">
   <div class="about-team-header reveal">
-    <p class="section-tag">The Team</p>
-    <h2>The people<br/><em>behind the work</em></h2>
-    <p>Korver AI Solutions brings together technical depth and complementary expertise to deliver projects end-to-end.</p>
+    <p class="section-tag">The Person Behind It</p>
+    <h2>Just me —<br/><em>Stijn Korver</em></h2>
+    <p>I build the solutions, manage the projects, and handle everything in between. If you reach out, you're talking to the person who will actually do the work.</p>
   </div>
 
-  <div class="team-subheading reveal">AI Specialists</div>
-  <div class="team-grid">
-    <!-- Stijn Korver -->
-    <div class="person-card reveal">
-      <img class="person-photo" src="{{ '/assets/images/team/stijn-korver.png' | relative_url }}" alt="SK" />
+  <div class="about-founder-wrap">
+    <div class="person-card about-founder-card reveal">
+      <img class="person-photo" src="{{ '/assets/images/team/stijn-korver.png' | relative_url }}" alt="Stijn Korver" />
       <div class="person-body">
         <div class="person-name">Stijn Korver</div>
-        <div class="person-role">Founder & Data Analyst</div>
-        <p class="person-bio">With a proactive mindset and a strong focus on continuous improvement, I enjoy turning complex data into clear, actionable insights.</p>
+        <div class="person-role">Founder — Korver AI Solutions</div>
+        <p class="person-bio">I started Korver AI Solutions in June 2025 to keep building beyond the scope of school projects — and to put four years of working in business operations to use. That background in customer service, business analysis, and account management is what makes the AI side practical: I build solutions for problems I've actually seen up close.</p>
+        <p class="person-bio">Alongside running Korver, I'm studying Applied Data Science & AI in Breda. Based in 's-Hertogenbosch.</p>
         <div class="person-links">
           <a href="https://linkedin.com/in/stijnkorver" class="person-link" target="_blank">&#8599; LinkedIn</a>
-          <a href="mailto:stijn@korver.ai" class="person-link">&#9993; Email</a>
-        </div>
-      </div>
-    </div>
-    <!-- Floris Lokhorst -->
-    <div class="person-card reveal">
-      <img class="person-photo" src="{{ '/assets/images/team/floris-lokhorst.png' | relative_url }}" alt="FL" />
-      <div class="person-body">
-        <div class="person-name">Floris Lokhorst</div>
-        <div class="person-role">Business Partner</div>
-        <p class="person-bio">Short bio about Floris goes here. A sentence or two about background, focus areas, and what drives the work.</p>
-        <div class="person-links">
-          <a href="https://linkedin.com/in/floris-lokhorst-65a97318a/" class="person-link" target="_blank">&#8599; LinkedIn</a>
-          <a href="mailto:florislokhorst@titotechnologies.com" class="person-link">&#9993; Email</a>
-        </div>
-      </div>
-    </div>
-    <!-- Ana Maria Farazica -->
-    <div class="person-card reveal">
-      <img class="person-photo" src="{{ '/assets/images/team/ana-maria-farazica.png' | relative_url }}" alt="AF" />
-      <div class="person-body">
-        <div class="person-name">Ana Maria Farazica</div>
-        <div class="person-role">AI Engineer</div>
-        <p class="person-bio">My main interest lies in finding patterns where others see noise. But when I'm not debugging, you'll probably find me on the couch with my cat.</p>
-        <div class="person-links">
-          <a href="https://linkedin.com/in/ana-maria-farazica/" class="person-link" target="_blank">&#8599; LinkedIn</a>
-          <a href="mailto:hello@korver.ai" class="person-link">&#9993; Email</a>
-        </div>
-      </div>
-    </div>
-    <!-- Kinga Marchlewska -->
-    <div class="person-card reveal">
-      <img class="person-photo" src="{{ '/assets/images/team/kinga-marchlewska.png' | relative_url }}" alt="KM" />
-      <div class="person-body">
-        <div class="person-name">Kinga Marchlewska</div>
-        <div class="person-role">Data Scientist</div>
-        <p class="person-bio">I am ambitious, hardworking, and a perfectionist who always does the best I can. I always want my work to contribute to changes for the better.</p>
-        <div class="person-links">
-          <a href="https://linkedin.com/in/kinga-marchlewska-2a2899232/" class="person-link" target="_blank">&#8599; LinkedIn</a>
-          <a href="mailto:hello@korver.ai" class="person-link">&#9993; Email</a>
-        </div>
-      </div>
-    </div>
-    <!-- Raya Kichukova -->
-    <div class="person-card reveal">
-      <img class="person-photo" src="{{ '/assets/images/team/raya-kichukova.png' | relative_url }}" alt="RK" />
-      <div class="person-body">
-        <div class="person-name">Raya Kichukova</div>
-        <div class="person-role">Data Engineer</div>
-        <p class="person-bio">Short bio about Raya goes here. A sentence or two about background, focus areas, and what drives the work.</p>
-        <div class="person-links">
-          <a href="https://linkedin.com/in/rayakichukova/" class="person-link" target="_blank">&#8599; LinkedIn</a>
-          <a href="mailto:hello@korver.ai" class="person-link">&#9993; Email</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="team-subheading reveal">Business Specialists</div>
-  <div class="team-grid">
-    <!-- Rosa Schrader -->
-    <div class="person-card reveal">
-      <img class="person-photo" src="{{ '/assets/images/team/rosa-schrader.png' | relative_url }}" alt="RS" />
-      <div class="person-body">
-        <div class="person-name">Rosa Schrader</div>
-        <div class="person-role">Marketing</div>
-        <p class="person-bio">Short bio about Rosa goes here. A sentence or two about background, focus areas, and what drives the work.</p>
-        <div class="person-links">
-          <a href="https://linkedin.com/in/rosa-s-103730222/" class="person-link" target="_blank">↗ LinkedIn</a>
-          <a href="mailto:hello@korver.ai" class="person-link">✉ Email</a>
-        </div>
-      </div>
-    </div>
-    <!-- Ole Korver -->
-    <div class="person-card reveal">
-      <img class="person-photo" src="{{ '/assets/images/team/ole-korver.png' | relative_url }}" alt="OK" />
-      <div class="person-body">
-        <div class="person-name">Ole Korver</div>
-        <div class="person-role">Finance</div>
-        <p class="person-bio">Short bio about Ole goes here. A sentence or two about background, focus areas, and what drives the work.</p>
-        <div class="person-links">
-          <a href="https://linkedin.com/in/ole-korver-1aa354328/" class="person-link" target="_blank">↗ LinkedIn</a>
-          <a href="mailto:hello@korver.ai" class="person-link">✉ Email</a>
-        </div>
-      </div>
-    </div>
-    <!-- Cas Korver -->
-    <div class="person-card reveal">
-      <img class="person-photo" src="{{ '/assets/images/team/cas-korver.png' | relative_url }}" alt="CK" />
-      <div class="person-body">
-        <div class="person-name">Cas Korver</div>
-        <div class="person-role">Policy</div>
-        <p class="person-bio">Short bio about Cas goes here. A sentence or two about background, focus areas, and what drives the work.</p>
-        <div class="person-links">
-          <a href="https://linkedin.com/in/cas-korver/" class="person-link" target="_blank">↗ LinkedIn</a>
-          <a href="mailto:hello@korver.ai" class="person-link">✉ Email</a>
+          <a href="mailto:stijn@korver.ai" class="person-link">&#9993; stijn@korver.ai</a>
         </div>
       </div>
     </div>
@@ -630,9 +550,9 @@ lang_nl: /nl/over-ons/
 <div class="about-cta">
   <div class="about-cta-content reveal">
     <h2>Ready to build <em>something?</em></h2>
-    <p>Tell us what you're working on. If we're a good fit, we'll say so. If not, we'll point you in the right direction.</p>
+    <p>Tell me what you're working on. If it's a good fit, I'll say so. If not, I'll point you in the right direction.</p>
     <div class="about-cta-actions">
-      <a href="/contact/" class="btn-primary">Get in Touch</a>
+      <a href="/en/contact/" class="btn-primary">Get in Touch</a>
       <a href="/en/services/" class="btn-secondary">How We Work</a>
     </div>
   </div>
