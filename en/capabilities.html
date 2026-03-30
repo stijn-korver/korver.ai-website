@@ -126,32 +126,7 @@ lang_nl: /nl/vaardigheden/
     color: var(--gray);
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1.5px solid var(--gray-light);
-  }
-  .cap-block.alt .cap-detail-section-title { border-bottom-color: var(--gray-mid); }
-
-  .cap-bullets {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
-  }
-  .cap-bullets li {
-    font-size: 0.9rem;
-    color: var(--gray);
-    font-weight: 300;
-    line-height: 1.5;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-  }
-  .cap-bullets li::before {
-    content: '—';
-    color: var(--accent-dark);
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 0.05em;
+    border-bottom: 1.5px solid var(--gray-mid);
   }
 
   /* PROJECT PROOF CARDS */
@@ -354,7 +329,6 @@ lang_nl: /nl/vaardigheden/
     .cap-hero { padding: 8rem 1.5rem 3rem; }
     .cap-block { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
     .cap-block-label { position: relative; top: 0; }
-    .cap-bullets { grid-template-columns: 1fr; }
     .cap-projects { grid-template-columns: 1fr; }
     .cap-supporting { padding: 5rem 1.5rem; }
     .supporting-grid { grid-template-columns: 1fr; }
@@ -389,22 +363,14 @@ lang_nl: /nl/vaardigheden/
       <div class="cap-example-box">
         <div class="cap-example-label">What this looks like in practice</div>
         <ul class="cap-example-list">
-          <li>Invoices arriving by email are read, extracted, and pushed to your accounting system — no manual entry.</li>
-          <li>Customer order forms are scanned and the data appears in your CRM automatically.</li>
-          <li>Supplier delivery notes are processed and matched against purchase orders without anyone touching a keyboard.</li>
+          <li>Invoices arriving by email are read, extracted, and pushed straight to your accounting system — no one touches them manually.</li>
+          <li>Customer order forms are scanned and the data appears in your CRM automatically, the moment they come in.</li>
+          <li>Supplier delivery notes are processed and matched against purchase orders without anyone opening a spreadsheet.</li>
+          <li>Expense receipts submitted by your team are categorised and filed automatically, ready for month-end in seconds.</li>
+          <li>Contract documents are parsed for key dates and values, which are then logged in your project system without manual entry.</li>
+          <li>Any document that can't be processed confidently is flagged for human review — nothing falls through the cracks.</li>
         </ul>
       </div>
-    </div>
-    <div class="cap-detail-section reveal">
-      <div class="cap-detail-section-title">What we build</div>
-      <ul class="cap-bullets">
-        <li>Pipelines that read and extract data from PDFs, scans, and email attachments</li>
-        <li>Systems that validate and route extracted data to the right place</li>
-        <li>Automated filing and archiving of processed documents</li>
-        <li>Exception handling for documents that need a human eye</li>
-        <li>Integration with your existing accounting, ERP, or CRM tools</li>
-        <li>Audit trails so you always know what was processed and when</li>
-      </ul>
     </div>
     <div class="cap-detail-section reveal">
       <div class="cap-detail-section-title">Proven in practice</div>
@@ -440,22 +406,14 @@ lang_nl: /nl/vaardigheden/
       <div class="cap-example-box">
         <div class="cap-example-label">What this looks like in practice</div>
         <ul class="cap-example-list">
-          <li>A weekly sales summary is generated every Monday morning and emailed to your team — no one has to pull it.</li>
-          <li>A live dashboard shows today's key numbers, updated automatically from your existing tools.</li>
-          <li>A monthly client report is assembled and formatted from your data, ready to send in minutes instead of hours.</li>
+          <li>A weekly sales summary lands in your inbox every Monday morning — pulled together automatically from your systems, no one had to build it.</li>
+          <li>A live dashboard shows today's key numbers, updated in real time, so your team always knows where things stand without chasing anyone for updates.</li>
+          <li>A monthly client report is assembled and formatted from your data automatically, ready to send in minutes instead of an afternoon.</li>
+          <li>An alert fires when a key metric drops below a threshold — you know before it becomes a problem, not after.</li>
+          <li>A demand forecast based on your own three years of sales history tells you what to order next quarter, not just what sold last year.</li>
+          <li>Management gets one clean view of performance across departments — no one compiling it, no version control issues, always current.</li>
         </ul>
       </div>
-    </div>
-    <div class="cap-detail-section reveal">
-      <div class="cap-detail-section-title">What we build</div>
-      <ul class="cap-bullets">
-        <li>Scheduled reports that run and distribute themselves automatically</li>
-        <li>Live dashboards your team will open every day, not just once</li>
-        <li>Data pipelines that pull from multiple sources and combine them cleanly</li>
-        <li>Forecasting models built on your own historical patterns</li>
-        <li>Alerts that flag anomalies before they become problems</li>
-        <li>Reports formatted for different audiences — management, clients, or operations</li>
-      </ul>
     </div>
     <div class="cap-detail-section reveal">
       <div class="cap-detail-section-title">Proven in practice</div>
@@ -499,22 +457,14 @@ lang_nl: /nl/vaardigheden/
       <div class="cap-example-box">
         <div class="cap-example-label">What this looks like in practice</div>
         <ul class="cap-example-list">
-          <li>Incoming service requests are classified and assigned to the right team member based on type, location, or availability — automatically.</li>
-          <li>A booking system that checks capacity, confirms appointments, and sends reminders without anyone managing a calendar.</li>
-          <li>Production tasks are sequenced and scheduled based on deadlines, dependencies, and current workload.</li>
+          <li>Incoming service requests are read, classified by type and urgency, and assigned to the right person — no one manually triages the queue.</li>
+          <li>A booking system checks your team's availability, confirms the appointment, and sends reminders to both sides without anyone managing a calendar.</li>
+          <li>Field jobs are scheduled in the most efficient order based on location, skill, and equipment — routes are planned automatically each morning.</li>
+          <li>When a job runs over or a team member calls in sick, affected tasks are automatically rescheduled and the relevant people are notified.</li>
+          <li>Production tasks are sequenced based on deadlines, material availability, and machine capacity — no spreadsheet to maintain, no coordinator to loop in.</li>
+          <li>Overdue or unassigned tasks are flagged automatically before they become a problem, so nothing goes quiet and forgotten.</li>
         </ul>
       </div>
-    </div>
-    <div class="cap-detail-section reveal">
-      <div class="cap-detail-section-title">What we build</div>
-      <ul class="cap-bullets">
-        <li>Routing logic that assigns tasks based on rules you define</li>
-        <li>Scheduling systems that factor in availability, priority, and dependencies</li>
-        <li>Automated confirmations, reminders, and status updates</li>
-        <li>Escalation flows that flag overdue or unassigned tasks</li>
-        <li>Integration with the calendars, CRMs, or tools you already use</li>
-        <li>Dashboards showing workload distribution and bottlenecks in real time</li>
-      </ul>
     </div>
     <div class="cap-detail-section reveal">
       <div class="cap-detail-section-title">Proven in practice</div>
@@ -551,21 +501,13 @@ lang_nl: /nl/vaardigheden/
         <div class="cap-example-label">What this looks like in practice</div>
         <ul class="cap-example-list">
           <li>A new order in your webshop automatically creates a record in your accounting software and triggers a fulfilment task — no one types anything twice.</li>
-          <li>Customer data entered in your CRM syncs to your invoicing tool, your email platform, and your support system in real time.</li>
-          <li>Your project management tool updates automatically when a client signs a contract in a separate system.</li>
+          <li>Customer data entered in your CRM syncs to your invoicing tool, your email platform, and your support system in real time — one entry, everywhere updated.</li>
+          <li>When a client signs a contract in your e-signature tool, your project management system creates the project and your finance tool raises the first invoice automatically.</li>
+          <li>Stock levels in your warehouse system update your webshop in real time — no manual syncing, no overselling.</li>
+          <li>Time logged by your team in one tool flows directly into your billing system, so invoices are accurate without anyone checking the numbers.</li>
+          <li>The spreadsheet someone maintains every morning to bridge two systems becomes unnecessary — the connection is just there, working quietly in the background.</li>
         </ul>
       </div>
-    </div>
-    <div class="cap-detail-section reveal">
-      <div class="cap-detail-section-title">What we build</div>
-      <ul class="cap-bullets">
-        <li>Connections between tools that don't natively integrate</li>
-        <li>Automated data sync so records are consistent across systems</li>
-        <li>Event-driven workflows triggered by actions in one tool affecting another</li>
-        <li>Data transformation layers that translate between different formats</li>
-        <li>Error handling and logging so you always know when something breaks</li>
-        <li>Clean handover documentation so your team can maintain it independently</li>
-      </ul>
     </div>
     <div class="cap-detail-section reveal">
       <div class="cap-detail-section-title">Proven in practice</div>
@@ -601,22 +543,14 @@ lang_nl: /nl/vaardigheden/
       <div class="cap-example-box">
         <div class="cap-example-label">What this looks like in practice</div>
         <ul class="cap-example-list">
-          <li>A demand forecast built on three years of your own sales history tells you how much stock to order next quarter.</li>
-          <li>An analysis of your customer data reveals which product lines are growing and which are quietly declining — before it shows up in your bottom line.</li>
-          <li>A single dashboard gives you an honest view of your operational performance, updated daily without anyone maintaining it.</li>
+          <li>A demand forecast built on your own three years of sales history tells you how much stock to order next quarter — not a generic model, yours.</li>
+          <li>An analysis of your customer data reveals which product lines are quietly declining before it shows up in your bottom line.</li>
+          <li>A single dashboard gives management an honest view of performance across the business, updated daily without anyone maintaining it.</li>
+          <li>You find out which of your clients are most at risk of churning, based on behaviour patterns in your own data, in time to do something about it.</li>
+          <li>A pricing analysis across two years of transactions shows exactly where you've been leaving margin on the table.</li>
+          <li>Complex data gets translated into a clear, plain-language report your team and clients can read and act on — no analyst required to interpret it.</li>
         </ul>
       </div>
-    </div>
-    <div class="cap-detail-section reveal">
-      <div class="cap-detail-section-title">What we build</div>
-      <ul class="cap-bullets">
-        <li>Forecasting models built on your own historical data</li>
-        <li>Clear analysis that tells you what your data actually means</li>
-        <li>Dashboards your team will open every day, not just once</li>
-        <li>Reports that explain findings to non-technical stakeholders</li>
-        <li>Trend detection that surfaces patterns before they become obvious</li>
-        <li>Honest methodology — we tell you the limits of what the data can say</li>
-      </ul>
     </div>
     <div class="cap-detail-section reveal">
       <div class="cap-detail-section-title">Proven in practice</div>
